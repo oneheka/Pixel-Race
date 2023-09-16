@@ -8,14 +8,12 @@ screen.fill((255,255,255))
 
 font = pygame.font.SysFont('Comic Sans MS', 30)
 
-running = True
+pygame.display.set_caption('Прикол')
 
-while running:
-    text_surface = font.render('Some Text', False, (0, 0, 0))
+while True:
+    text_surface = font.render('Начать', False, (0, 0, 0))
     screen.blit(text_surface, (0,0))
     for event in pygame.event.get():  
         if event.type == pygame.QUIT:  
-            running = False
+            pygame.quit()
     pygame.display.flip()
-
-pygame.quit()
