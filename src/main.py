@@ -1,4 +1,5 @@
 import pygame
+from pages import MainPage
 
 class Pygame:
     screen = pygame.display.set_mode((360, 660))
@@ -15,6 +16,10 @@ class Pygame:
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()
+            
+            if(self.state == 'Menu'):
+                MainPage(self.screen).render()
+            
 
             pygame.display.update()
 
