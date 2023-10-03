@@ -7,7 +7,8 @@ class Pygame:
     icon = pygame.image.load('assets/images/icon.png').convert_alpha()
     background = pygame.image.load('assets/images/bg.png').convert_alpha()
     car = pygame.image.load('assets/images/buttons/playButton.png').convert_alpha()
-    background_y = 0
+    eronary_y = 0
+    walpuper_y = 0
     state = 'Menu'
     
 
@@ -23,13 +24,18 @@ class Pygame:
                 if(event.type == pygame.QUIT):
                     pygame.quit()
             
-            self.screen.blit(self.car, ((0, self.background_y + 1000)))
-            self.background_y -= 2
-            if (self.background_y == -1000):
-                self.background_y = 0
+            # self.screen.blit(self.car, ((0, self.background_y + 1000)))
+            self.eronary_y -= 2
+            if (self.eronary_y == -1100):
+                self.eronary_y = 0
+
+            if (self.eronary_y > -342):
+                self.walpuper_y -= 2
+                if (self.eronary_y == -1100):
+                    self.eronary_y = 0
 
             if(self.state == 'Menu'):
-                MainPage(self.screen, self.background_y).render()
+                MainPage(self.screen, self.eronary_y, self.walpuper_y).render()
 
             pygame.display.update()
             pygame.time.Clock().tick(300)
