@@ -6,6 +6,7 @@ class Pygame:
     pygame.display.set_caption('Niako Game')
     icon = pygame.image.load('assets/images/icon.png').convert_alpha()
     background = pygame.image.load('assets/images/bg.png').convert_alpha()
+    car = pygame.image.load('assets/images/buttons/playButton.png').convert_alpha()
     background_y = 0
     state = 'Menu'
     
@@ -14,22 +15,21 @@ class Pygame:
         pygame.font.init()
         pygame.init()
         pygame.display.set_icon(self.icon)
-        self.screen.blit(self.background, ((0, self.background_y)))
 
         while(bool(self.state)):
+            self.screen.blit(self.background, ((0, 0)))
+
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()
-
-            if(self.state == 'Menu'):
-                MainPage(self.screen, self.background_y).render()
             
-            self.screen.blit(self.background, ((0, self.background_y + 1000)))
+            self.screen.blit(self.car, ((0, self.background_y + 1000)))
             self.background_y -= 2
             if (self.background_y == -1000):
                 self.background_y = 0
 
-            
+            if(self.state == 'Menu'):
+                MainPage(self.screen, self.background_y).render()
 
             pygame.display.update()
             pygame.time.Clock().tick(300)
