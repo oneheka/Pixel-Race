@@ -26,13 +26,18 @@ class Pygame:
             
             # self.screen.blit(self.car, ((0, self.background_y + 1000)))
             self.eronary_y -= 2
-            if (self.eronary_y == -1100):
+            if (-1100 > self.eronary_y):
                 self.eronary_y = 0
 
             if (self.eronary_y > -342):
+                if(self.walpuper_y > -2):
+                    self.walpuper_y = 1
+            
+            if(self.walpuper_y != 0):
                 self.walpuper_y -= 2
-                if (self.eronary_y == -1100):
-                    self.eronary_y = 0
+            
+            if (-1100 > self.walpuper_y):
+                self.walpuper_y = 0
 
             if(self.state == 'Menu'):
                 MainPage(self.screen, self.eronary_y, self.walpuper_y).render()
