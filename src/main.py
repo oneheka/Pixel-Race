@@ -12,6 +12,7 @@ class Pygame:
         pygame.font.init()
         pygame.init()
         pygame.display.set_icon(self.icon)
+
         while(bool(self.state)):
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
