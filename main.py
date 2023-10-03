@@ -1,4 +1,5 @@
 import pygame
+import hui
 
 pygame.init()
 pygame.font.init()
