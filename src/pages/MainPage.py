@@ -1,7 +1,8 @@
+import pygame
+
 class MainPage:
-    def __init__(self, screen):
-        self.screen = screen
+    def __init__(self, main):
+        self.main = main
 
     def render(self):
-        print(self)
-        self.screen.fill('black')
+        self.main.fill('red')

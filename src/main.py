@@ -1,5 +1,5 @@
 import pygame
-from pages import MainPage
+from pages.MainPage import MainPage
 
 class Pygame:
     screen = pygame.display.set_mode((360, 660))
