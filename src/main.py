@@ -1,30 +1,28 @@
 import pygame
 from pages.MainPage import MainPage
+from util import Util
 
-class Pygame:
+class Game:
     screen = pygame.display.set_mode((360, 660))
     pygame.display.set_caption('Niako Game')
-    icon = pygame.image.load('assets/images/icon.png').convert_alpha()
-    background = pygame.image.load('assets/images/bg.png').convert_alpha()
-    car = pygame.image.load('assets/images/buttons/playButton.png').convert_alpha()
     eronary_y = 0
     walpuper_y = 0
+    util = Util()
     state = 'Menu'
     
 
     def build(self):
         pygame.font.init()
         pygame.init()
-        pygame.display.set_icon(self.icon)
+        pygame.display.set_icon(self.util.icon)
 
         while(bool(self.state)):
-            self.screen.blit(self.background, ((0, 0)))
+            self.screen.blit(self.util.background, ((0, 0)))
 
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()
             
-            # self.screen.blit(self.car, ((0, self.background_y + 1000)))
             self.eronary_y -= 2
             if (-1100 > self.eronary_y):
                 self.eronary_y = 0
@@ -40,9 +38,9 @@ class Pygame:
                 self.walpuper_y = 0
 
             if(self.state == 'Menu'):
-                MainPage(self.screen, self.eronary_y, self.walpuper_y).render()
+                MainPage(self).render()
 
             pygame.display.update()
             pygame.time.Clock().tick(300)
 
-Pygame().build()
+Game().build()

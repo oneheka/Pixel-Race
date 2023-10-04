@@ -1,25 +1,15 @@
 import pygame
 
 class MainPage:
-    def __init__(self, main, eronary_y, walpuper_y):
-        self.main = main
-        self.eronary_y = eronary_y
-        self.walpuper_y = walpuper_y
+    def __init__(self, game):
+        self.game = game
 
     def render(self):
-        buttonPlay = pygame.image.load('assets/images/buttons/playButton.png').convert_alpha()
-        buttonSkins = pygame.image.load('assets/images/buttons/skinsButton.png').convert_alpha()
-        darker_bg = pygame.image.load('assets/images/darker_bg.png').convert_alpha()
-        eronary = pygame.image.load('assets/images/skins/eronaryCar.png').convert_alpha()
-        walpuper = pygame.image.load('assets/images/skins/walpuperCar.png').convert_alpha()
-        stars = pygame.image.load('assets/images/stars.png').convert_alpha()
-        record = pygame.image.load('assets/images/record.png').convert_alpha()
-
-        self.main.blit(walpuper, ((28, self.walpuper_y + 1000)))
-        self.main.blit(eronary, ((152, self.eronary_y + 1000)))
-        self.main.blit(darker_bg, ((0, 0)))
-        self.main.blit(record, ((15, 15)))
-        self.main.blit(stars, ((15, 66)))
-        self.main.blit(buttonPlay, ((90, 261)))
-        self.main.blit(buttonSkins, ((90, 334)))
+        self.game.screen.blit(self.game.util.skins[0], ((152, self.game.eronary_y + 1000)))
+        self.game.screen.blit(self.game.util.skins[1], ((28, self.game.walpuper_y + 1000)))
+        self.game.screen.blit(self.game.util.darkerBackground, ((0, 0)))
+        self.game.screen.blit(self.game.util.record, ((15, 15)))
+        self.game.screen.blit(self.game.util.coins, ((15, 66)))
+        self.game.screen.blit(self.game.util.buttons[0], ((90, 261)))
+        self.game.screen.blit(self.game.util.buttons[1], ((90, 334)))
         
