@@ -5,7 +5,7 @@ class SettingsPage:
         self.game = game
         self.mouse = pygame.mouse.get_pos()
 
-    def render(self):
+    def render(self, clicked):
         self.game.screen.blit(self.game.util.skins[0], ((152, self.game.eronary_y + 1000)))
         self.game.screen.blit(self.game.util.skins[1], ((28, self.game.walpuper_y + 1000)))
         self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
@@ -15,7 +15,8 @@ class SettingsPage:
         self.game.screen.blit(self.game.util.settings[3], ((194, 257)))
         self.game.screen.blit(self.game.util.settings[5], ((50, 360.5)))
         self.game.screen.blit(self.game.util.settings[6], ((82, 311.5)))
-        self.game.screen.blit(self.game.util.settings[1], ((305, 15)))
-
-
+        settings = self.game.screen.blit(self.game.util.settings[1], ((305, 15)))
+        if settings.collidepoint(self.mouse) and clicked:
+            if(self.game.state != "Menu"):
+                self.game.state = 'Menu'
         

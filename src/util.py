@@ -26,4 +26,3 @@ class Util:
             pygame.image.load('assets/images/skins/walpuperCar.png').convert_alpha(),
             pygame.image.load('assets/images/skins/aquaCar.png').convert_alpha()
         ]
-    
