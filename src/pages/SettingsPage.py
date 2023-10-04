@@ -14,6 +14,7 @@ class SettingsPage:
         self.game.screen.blit(self.game.util.settingsBackground, ((32, 200)))
         a = self.game.screen.blit(self.game.util.settings[1], ((305, 15)))
         if a.collidepoint(self.mouse) and self.pressed:
-            self.state = 'Menu'
+            if(self.game.state != "Settings") return 
+            self.game.state = 'Menu'
 
         
