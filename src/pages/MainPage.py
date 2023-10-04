@@ -15,7 +15,7 @@ class MainPage:
         self.game.screen.blit(self.game.util.coins, ((15, 66)))
         a = self.game.screen.blit(self.game.util.settings[0], ((305, 15)))
         if a.collidepoint(self.mouse) and self.pressed:
-            print(1)
-            self.state = 'Settings'
+            if(self.game.state != "Menu") return
+            self.game.state = 'Settings'
         self.game.screen.blit(self.game.util.buttons[0], ((90, 261)))
         self.game.screen.blit(self.game.util.buttons[1], ((90, 334)))
