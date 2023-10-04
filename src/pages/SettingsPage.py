@@ -1,6 +1,6 @@
 import pygame
 
-class MainPage:
+class SettingsPage:
     def __init__(self, game):
         self.game = game
 
@@ -9,8 +9,7 @@ class MainPage:
         self.game.screen.blit(self.game.util.skins[1], ((28, self.game.walpuper_y + 1000)))
         self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
         self.game.screen.blit(self.game.util.darkerBackground, ((0, 0)))
-        self.game.screen.blit(self.game.util.record, ((15, 15)))
-        self.game.screen.blit(self.game.util.coins, ((15, 66)))
-        self.game.screen.blit(self.game.util.settings[0], ((305, 15)))
-        self.game.screen.blit(self.game.util.buttons[0], ((90, 261)))
-        self.game.screen.blit(self.game.util.buttons[1], ((90, 334)))
+        self.game.screen.blit(self.game.util.settingsBackground, ((32, 200)))
+        self.game.screen.blit(self.game.util.settings[1], ((305, 15)))
+
+        
