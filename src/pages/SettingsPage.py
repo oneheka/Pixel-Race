@@ -19,4 +19,3 @@ class SettingsPage:
         if settings.collidepoint(self.mouse) and clicked:
             if(self.game.state != "Menu"):
                 self.game.state = 'Menu'
-        

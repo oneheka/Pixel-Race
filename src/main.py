@@ -1,5 +1,6 @@
 import pygame
 from pages.MainPage import MainPage
+from pages.SkinsPage import SkinsPage
 from pages.SettingsPage import SettingsPage
 from util import Util
 
@@ -34,6 +35,8 @@ class Game:
                 MainPage(self).render(clicked)
             elif(self.state == 'Settings'):
                 SettingsPage(self).render(clicked)
+            elif(self.state == 'Skins'):
+                SkinsPage(self).render(clicked)
             
             pygame.display.update()
             pygame.time.Clock().tick(300)
