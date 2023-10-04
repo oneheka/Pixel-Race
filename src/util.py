@@ -14,7 +14,12 @@ class Util:
         self.record = pygame.image.load('assets/images/record.png').convert_alpha()
         self.settings = [
             pygame.image.load('assets/images/settings.png').convert_alpha(),
-            pygame.image.load('assets/images/settings_exit.png').convert_alpha()
+            pygame.image.load('assets/images/settings_exit.png').convert_alpha(),
+            pygame.image.load('assets/images/settings_text.png').convert_alpha(),
+            pygame.image.load('assets/images/buttons/toggle_on.png').convert_alpha(),
+            pygame.image.load('assets/images/buttons/toggle_off.png').convert_alpha(),
+            pygame.image.load('assets/images/music_choiser.png').convert_alpha(),
+            pygame.image.load('assets/images/settings_text2.png').convert_alpha(),
         ]
         self.skins = [
             pygame.image.load('assets/images/skins/eronaryCar.png').convert_alpha(),

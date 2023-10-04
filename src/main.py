@@ -10,7 +10,7 @@ class Game:
     walpuper_y = 0
     aqua_y = 0
     util = Util()
-    state = 'Menu'
+    state = 'Settings'
     
 
     def build(self):
@@ -18,13 +18,14 @@ class Game:
         pygame.init()
         pygame.display.set_icon(self.util.icon)
 
+
+
         while(bool(self.state)):
             self.screen.blit(self.util.background, ((0, 0)))
 
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()
-
             
             self.eronary_y -= 2
             if (-1100 > self.eronary_y):
@@ -53,7 +54,7 @@ class Game:
                 MainPage(self).render()
             if(self.state == 'Settings'):
                 SettingsPage(self).render()
-
+            
             pygame.display.update()
             pygame.time.Clock().tick(300)
 
