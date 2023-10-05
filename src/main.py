@@ -9,6 +9,7 @@ pygame.init()
 class Game:
     screen = pygame.display.set_mode((360, 660))
     pygame.display.set_caption('Niako Game')
+    isPlaying = False
     eronary_y = 0
     walpuper_y = 0
     aqua_y = 0
@@ -23,6 +24,14 @@ class Game:
             file_content = f.read()
             self.config = json.loads(file_content)
 
+    def updatePlaying(self):
+        if(self.isPlaying != self.SettingsPage.isPlaying):
+            self.isPlaying = self.SettingsPage.isPlaying
+            if(self.SettingsPage.isPlaying):
+                self.util.sounds[1].play()
+            else:
+                self.util.sounds[1].stop()
+
     def build(self):
         pygame.display.set_icon(self.util.icon)
 
@@ -31,10 +40,7 @@ class Game:
 
             clicked = False
 
-            if(self.SettingsPage.isPlaying == True):
-                self.util.sounds[2].play()
-            else:
-                self.util.sounds[2].stop()
+            self.updatePlaying()
 
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
