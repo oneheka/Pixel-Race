@@ -1,0 +1,20 @@
+{
+    "skins": [
+        {
+            "name": "Eronary",
+            "file": "eronaryCar",
+            "cost": 0,
+            "default": true,
+            "has": true
+        },
+        {
+            "name": "Walpuper",
+            "file": "walpuperCar",
+            "cost": 100,
+            "default": false,
+            "has": false
+        }
+    ],
+    "record": 0,
+    "coins": 0
+}
