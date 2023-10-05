@@ -4,7 +4,6 @@ import json
 class SkinsPage:
     def __init__(self, game):
         self.game = game
-        self.mouse = pygame.mouse.get_pos()
         self.page = 0
         with open('src/config.json') as f:
             file_content = f.read()
@@ -12,6 +11,8 @@ class SkinsPage:
 
 
     def render(self, clicked):
+        mouse = pygame.mouse.get_pos()
+
         self.game.screen.blit(self.game.util.skins[0], ((152, self.game.eronary_y + 1000)))
         self.game.screen.blit(self.game.util.skins[1], ((28, self.game.walpuper_y + 1000)))
         self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
@@ -38,15 +39,15 @@ class SkinsPage:
         )
 
         left = self.game.screen.blit(self.game.util.skins_page[2], ((16, 306)))
-        if left.collidepoint(self.mouse) and clicked:
+        if left.collidepoint(mouse) and clicked:
             self.left()
 
         right = self.game.screen.blit(self.game.util.skins_page[3], ((296, 306)))
-        if right.collidepoint(self.mouse) and clicked:
+        if right.collidepoint(mouse) and clicked:
             self.right()
 
         settings = self.game.screen.blit(self.game.util.settings[1], ((305, 15)))
-        if settings.collidepoint(self.mouse) and clicked:
+        if settings.collidepoint(mouse) and clicked:
             if(self.game.state != "Menu"):
                 self.game.state = 'Menu'
 

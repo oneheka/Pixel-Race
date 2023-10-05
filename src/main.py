@@ -14,6 +14,11 @@ class Game:
     util = Util()
     state = 'Menu'
 
+    def __init__(self):
+        self.MainPage = MainPage(self)
+        self.SkinsPage = SkinsPage(self)
+        self.SettingsPage = SettingsPage(self)
+
     def build(self):
         pygame.display.set_icon(self.util.icon)
 
@@ -31,11 +36,11 @@ class Game:
             self.setCarAnimation()
 
             if(self.state == 'Menu'):
-                MainPage(self).render(clicked)
+                self.MainPage.render(clicked)
             elif(self.state == 'Settings'):
-                SettingsPage(self).render(clicked)
+                self.SettingsPage.render(clicked)
             elif(self.state == 'Skins'):
-                SkinsPage(self).render(clicked)
+                self.SkinsPage.render(clicked)
             
             pygame.display.update()
             pygame.time.Clock().tick(300)
