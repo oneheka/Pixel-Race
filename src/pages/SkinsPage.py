@@ -13,6 +13,13 @@ class SkinsPage:
         self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
         self.game.screen.blit(self.game.util.darkerBackground, ((0, 0)))
 
+        self.game.screen.blit(self.game.util.coins, ((15, 15)))
+        self.game.screen.blit(
+            self.game.util.mainfont.render(
+                str(self.game.config['coins']), False, 'white'
+            ), ((23, 23))
+        )
+
         skins = self.game.config['skins']
 
         self.game.screen.blit(self.game.util.skins_page[0], ((101, 200)))
