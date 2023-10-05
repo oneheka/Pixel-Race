@@ -23,6 +23,12 @@ class Game:
         with open('src/config.json') as f:
             file_content = f.read()
             self.config = json.loads(file_content)
+    
+    def updateConfig(self, data):
+        with open('src/config.json', 'w') as f:
+            f.seek(0)
+            json.dump(data, f)
+            f.truncate()
 
     def updatePlaying(self):
         if(self.isPlaying != self.SettingsPage.isPlaying):
