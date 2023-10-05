@@ -28,7 +28,7 @@ class Game:
         if(self.isPlaying != self.SettingsPage.isPlaying):
             self.isPlaying = self.SettingsPage.isPlaying
             if(self.SettingsPage.isPlaying):
-                self.util.sounds[1].play()
+                self.util.sounds[1].play(-1)
             else:
                 self.util.sounds[1].stop()
 
