@@ -2,6 +2,7 @@ import pygame
 
 class Util:
     def __init__(self):
+        self.mainfont = pygame.font.Font('fonts/efnmacstyle8px.ttf', 24)
         self.buttons = [
             pygame.image.load('assets/images/buttons/playButton.png').convert_alpha(),
             pygame.image.load('assets/images/buttons/skinsButton.png').convert_alpha()
@@ -12,6 +13,17 @@ class Util:
         self.darkerBackground = pygame.image.load('assets/images/darker_bg.png').convert_alpha()
         self.coins = pygame.image.load('assets/images/coins.png').convert_alpha()
         self.record = pygame.image.load('assets/images/record.png').convert_alpha()
+        self.skins_page = [
+                pygame.image.load('assets/images/skins_plate.png').convert_alpha(),
+                pygame.image.load('assets/images/buttons/buyButton.png').convert_alpha(),
+                pygame.image.load('assets/images/skins/walpuperShop.png').convert_alpha(),
+                pygame.image.load('assets/images/coin.png').convert_alpha(),
+                pygame.image.load('assets/images/buttons/leftArrow.png').convert_alpha(),
+                pygame.image.load('assets/images/buttons/rightArrow.png').convert_alpha(),
+                self.mainfont.render('100', False, 'white'),
+                self.mainfont.render('Walpuper', False, 'white')
+
+        ]
         self.settings = [
             pygame.image.load('assets/images/settings.png').convert_alpha(),
             pygame.image.load('assets/images/settings_exit.png').convert_alpha(),
@@ -24,5 +36,5 @@ class Util:
         self.skins = [
             pygame.image.load('assets/images/skins/eronaryCar.png').convert_alpha(),
             pygame.image.load('assets/images/skins/walpuperCar.png').convert_alpha(),
-            pygame.image.load('assets/images/skins/aquaCar.png').convert_alpha()
+            pygame.image.load('assets/images/skins/aquaCar.png').convert_alpha(),
         ]

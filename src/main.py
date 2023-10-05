@@ -4,6 +4,7 @@ from pages.SkinsPage import SkinsPage
 from pages.SettingsPage import SettingsPage
 from util import Util
 
+pygame.init()
 class Game:
     screen = pygame.display.set_mode((360, 660))
     pygame.display.set_caption('Niako Game')
@@ -14,8 +15,6 @@ class Game:
     state = 'Menu'
 
     def build(self):
-        pygame.font.init()
-        pygame.init()
         pygame.display.set_icon(self.util.icon)
 
         while(bool(self.state)):
