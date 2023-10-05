@@ -31,7 +31,8 @@ class Game:
                 if(event.type == pygame.QUIT):
                     pygame.quit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    clicked = True
+                    if event.button == 1:
+                        clicked = True
             
             self.setCarAnimation()
 
@@ -67,7 +68,5 @@ class Game:
         if(-1100 > self.aqua_y):
             self.aqua_y = 0
     
-    def updateState(self, state):
-        self.state = state
 
 Game().build()
