@@ -25,13 +25,16 @@ class SkinsPage:
         self.game.screen.blit(self.game.util.skins_page[0], ((101, 200)))
 
         if(skins[self.page]['has']):
-            setter = self.game.screen.blit(self.game.util.skins_page[3], ((132, 395)))
-            if setter.collidepoint(mouse) and clicked:
-                for i in range(len(skins)):
-                    if(skins[i]['default']):
-                        self.game.config['skins'][i]['default'] = False
-                self.game.config['skins'][self.page]['default'] = True
-                self.game.updateConfig(self.game.config)
+            if(skins[self.page]['default']):
+                self.game.screen.blit(self.game.util.skins_page[6], ((132, 395)))
+            else:
+                setter = self.game.screen.blit(self.game.util.skins_page[3], ((132, 395)))
+                if setter.collidepoint(mouse) and clicked:
+                    for i in range(len(skins)):
+                        if(skins[i]['default']):
+                            self.game.config['skins'][i]['default'] = False
+                    self.game.config['skins'][self.page]['default'] = True
+                    self.game.updateConfig(self.game.config)
         else:
             if(skins[self.page]['cost'] > self.game.config['coins']):
                 self.game.screen.blit(self.game.util.skins_page[2], ((132, 395)))

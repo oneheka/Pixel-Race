@@ -3,6 +3,7 @@ import json
 from pages.MainPage import MainPage
 from pages.SkinsPage import SkinsPage
 from pages.SettingsPage import SettingsPage
+from pages.PlayPage import PlayPage
 from util import Util
 
 pygame.init()
@@ -21,6 +22,8 @@ class Game:
         self.MainPage = MainPage(self)
         self.SkinsPage = SkinsPage(self)
         self.SettingsPage = SettingsPage(self)
+        self.PlayPage = PlayPage(self)
+
         with open('src/config.json') as f:
             file_content = f.read()
             self.config = json.loads(file_content)
@@ -41,7 +44,6 @@ class Game:
 
     def build(self):
         pygame.display.set_icon(self.util.icon)
-
         while(bool(self.state)):
             self.screen.blit(self.util.background, ((0, 0)))
 
@@ -64,6 +66,8 @@ class Game:
                 self.SettingsPage.render(clicked)
             elif(self.state == 'Skins'):
                 self.SkinsPage.render(clicked)
+            elif(self.state == 'Play'):
+                self.PlayPage.render()
             
             pygame.display.update()
             pygame.time.Clock().tick(300)

@@ -30,7 +30,10 @@ class MainPage:
         if settings.collidepoint(mouse) and clicked:
             if(self.game.state != "Settings"):
                 self.game.state = "Settings"
-        self.game.screen.blit(self.game.util.buttons[0], ((90, 261)))
+        play = self.game.screen.blit(self.game.util.buttons[0], ((90, 261)))
+        if play.collidepoint(mouse) and clicked:
+            if(self.game.state != "Play"):
+                self.game.state = 'Play'
         skins = self.game.screen.blit(self.game.util.buttons[1], ((90, 334)))
         if skins.collidepoint(mouse) and clicked:
             if(self.game.state != "Skins"):
