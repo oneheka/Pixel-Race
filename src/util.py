@@ -30,6 +30,8 @@ class Util:
             pygame.image.load('assets/images/buttons/toggle_off.png').convert_alpha(),
             pygame.image.load('assets/images/music_choiser.png').convert_alpha(),
             pygame.image.load('assets/images/settings_text2.png').convert_alpha(),
+            pygame.image.load('assets/images/select_opened.png').convert_alpha(),
+            pygame.image.load('assets/images/buttons/song.png').convert_alpha(),
         ]
         self.skins = [
             pygame.image.load('assets/images/skins/eronaryCar.png').convert_alpha(),

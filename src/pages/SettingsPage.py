@@ -4,6 +4,7 @@ class SettingsPage:
     def __init__(self, game):
         self.game = game
         self.isPlaying = False
+        self.select = False
 
     def render(self, clicked):
         mouse = pygame.mouse.get_pos()
@@ -18,7 +19,17 @@ class SettingsPage:
             toggle = self.game.screen.blit(self.game.util.settings[3], ((194, 257)))
         else:
             toggle = self.game.screen.blit(self.game.util.settings[4], ((194, 257)))
-        self.game.screen.blit(self.game.util.settings[5], ((50, 360.5)))
+        if(self.select):
+            select_m = self.game.screen.blit(self.game.util.settings[7], ((50, 360.5)))
+            for i in range(1, 3):
+                plates = [
+                    self.game.screen.blit(self.game.util.settings[8], ((57, 400))),
+                    self.game.screen.blit(self.game.util.settings[8], ((57, 443))),
+                    self.game.screen.blit(self.game.util.settings[8], ((57, 486))),
+                ]
+                plates[i]
+        else:
+            select_m = self.game.screen.blit(self.game.util.settings[5], ((50, 360.5)))
         self.game.screen.blit(self.game.util.settings[6], ((82, 311.5)))
         settings = self.game.screen.blit(self.game.util.settings[1], ((305, 15)))
         if settings.collidepoint(mouse) and clicked:
@@ -27,3 +38,7 @@ class SettingsPage:
         
         if toggle.collidepoint(mouse) and clicked:
             self.isPlaying = not self.isPlaying
+            
+        if select_m.collidepoint(mouse) and clicked:
+            self.select = not self.select
+    
