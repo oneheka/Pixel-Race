@@ -13,6 +13,7 @@ class Game:
     eronary_y = 0
     walpuper_y = 0
     aqua_y = 0
+    getSound = 0
     util = Util()
     state = 'Menu'
 
@@ -34,9 +35,9 @@ class Game:
         if(self.isPlaying != self.SettingsPage.isPlaying):
             self.isPlaying = self.SettingsPage.isPlaying
             if(self.SettingsPage.isPlaying):
-                self.util.sounds[1].play(-1)
+                self.util.sounds[self.getSound]['file'].play(-1)
             else:
-                self.util.sounds[1].stop()
+                self.util.sounds[self.getSound]['file'].stop()
 
     def build(self):
         pygame.display.set_icon(self.util.icon)

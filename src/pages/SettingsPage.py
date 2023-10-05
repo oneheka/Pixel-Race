@@ -20,14 +20,22 @@ class SettingsPage:
         else:
             toggle = self.game.screen.blit(self.game.util.settings[4], ((194, 257)))
         if(self.select):
+            y = 400
             select_m = self.game.screen.blit(self.game.util.settings[7], ((50, 360.5)))
-            for i in range(1, 3):
-                plates = [
-                    self.game.screen.blit(self.game.util.settings[8], ((57, 400))),
-                    self.game.screen.blit(self.game.util.settings[8], ((57, 443))),
-                    self.game.screen.blit(self.game.util.settings[8], ((57, 486))),
-                ]
-                plates[i]
+            for i in range(len(self.game.util.sounds)):
+                btn = self.game.screen.blit(self.game.util.settings[8 if self.game.getSound == i else 9], ((57, y)))
+                self.game.screen.blit(
+                    self.game.util.mainfont.render(
+                        self.game.util.sounds[i]['name'], False, 'white'
+                    ), ((62, y+4))
+                )
+                y += 43
+                if btn.collidepoint(mouse) and clicked:
+                    if(self.isPlaying):
+                        for j in range(len(self.game.util.sounds)):
+                            self.game.util.sounds[j]['file'].stop()
+                        self.game.getSound = i
+                        self.game.util.sounds[i]['file'].play()
         else:
             select_m = self.game.screen.blit(self.game.util.settings[5], ((50, 360.5)))
         self.game.screen.blit(self.game.util.settings[6], ((82, 311.5)))

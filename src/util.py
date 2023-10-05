@@ -1,8 +1,9 @@
 import pygame
+import os
 
 class Util:
     def __init__(self):
-        self.mainfont = pygame.font.Font('fonts/efnmacstyle8px.ttf', 24)
+        self.mainfont = pygame.font.Font('fonts/efnmacstyle8px.ttf', 20)
         self.buttons = [
             pygame.image.load('assets/images/buttons/playButton.png').convert_alpha(),
             pygame.image.load('assets/images/buttons/skinsButton.png').convert_alpha()
@@ -32,17 +33,28 @@ class Util:
             pygame.image.load('assets/images/settings_text2.png').convert_alpha(),
             pygame.image.load('assets/images/select_opened.png').convert_alpha(),
             pygame.image.load('assets/images/buttons/song.png').convert_alpha(),
+            pygame.image.load('assets/images/buttons/choosen_song.png').convert_alpha()
         ]
         self.skins = [
             pygame.image.load('assets/images/skins/eronaryCar.png').convert_alpha(),
             pygame.image.load('assets/images/skins/walpuperCar.png').convert_alpha(),
             pygame.image.load('assets/images/skins/aquaCar.png').convert_alpha(),
         ]
-        self.sounds = [
-            pygame.mixer.Sound('assets/music/sound_1.mp3'),
-            pygame.mixer.Sound('assets/music/sound_2.mp3'),
-            pygame.mixer.Sound('assets/music/sound_3.mp3')
-        ]
+        #self.sounds = [
+        #    pygame.mixer.Sound('assets/music/sound_1.mp3'),
+        #    pygame.mixer.Sound('assets/music/sound_2.mp3'),
+        #    pygame.mixer.Sound('assets/music/sound_3.mp3')
+        #]
+
+        self.sounds = []
+        for filename in os.listdir('assets/music'):
+            self.sounds.append(
+                {
+                    'name': (filename.split('.')[0]),
+                    'file': pygame.mixer.Sound(f'assets/music/{filename}'),
+                }
+            )
+
     
     def getImage(self, name):
         if(name == 'Eronary'):
