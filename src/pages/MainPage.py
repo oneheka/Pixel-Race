@@ -13,6 +13,19 @@ class MainPage:
         self.game.screen.blit(self.game.util.darkerBackground, ((0, 0)))
         self.game.screen.blit(self.game.util.record, ((15, 15)))
         self.game.screen.blit(self.game.util.coins, ((15, 66)))
+        
+        self.game.screen.blit(
+            self.game.util.mainfont.render(
+                str(self.game.config['record'])+'m', False, 'white'
+            ), ((23, 23))
+        )
+
+        self.game.screen.blit(
+            self.game.util.mainfont.render(
+                str(self.game.config['coins']), False, 'white'
+            ), ((23, 74))
+        )
+
         settings = self.game.screen.blit(self.game.util.settings[0], ((305, 15)))
         if settings.collidepoint(mouse) and clicked:
             if(self.game.state != "Settings"):
