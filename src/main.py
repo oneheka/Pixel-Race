@@ -1,4 +1,5 @@
 import pygame
+import json
 from pages.MainPage import MainPage
 from pages.SkinsPage import SkinsPage
 from pages.SettingsPage import SettingsPage
@@ -18,6 +19,9 @@ class Game:
         self.MainPage = MainPage(self)
         self.SkinsPage = SkinsPage(self)
         self.SettingsPage = SettingsPage(self)
+        with open('src/config.json') as f:
+            file_content = f.read()
+            self.config = json.loads(file_content)
 
     def build(self):
         pygame.display.set_icon(self.util.icon)

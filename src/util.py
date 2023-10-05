@@ -17,6 +17,8 @@ class Util:
         self.skins_page = [
                 pygame.image.load('assets/images/skins_plate.png').convert_alpha(),
                 pygame.image.load('assets/images/buttons/buyButton.png').convert_alpha(),
+                pygame.image.load('assets/images/buttons/noBuyButton.png').convert_alpha(),
+                pygame.image.load('assets/images/buttons/setButton.png').convert_alpha(),
                 pygame.image.load('assets/images/buttons/leftArrow.png').convert_alpha(),
                 pygame.image.load('assets/images/buttons/rightArrow.png').convert_alpha()
         ]

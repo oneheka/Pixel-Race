@@ -1,14 +1,9 @@
 import pygame
-import json
 
 class SkinsPage:
     def __init__(self, game):
         self.game = game
         self.page = 0
-        with open('src/config.json') as f:
-            file_content = f.read()
-            self.config = json.loads(file_content)
-
 
     def render(self, clicked):
         mouse = pygame.mouse.get_pos()
@@ -18,10 +13,18 @@ class SkinsPage:
         self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
         self.game.screen.blit(self.game.util.darkerBackground, ((0, 0)))
 
-        skins = self.config['skins']
+        skins = self.game.config['skins']
 
         self.game.screen.blit(self.game.util.skins_page[0], ((101, 200)))
-        self.game.screen.blit(self.game.util.skins_page[1], ((132, 395)))
+
+        if(skins[self.page]['has']):
+            self.game.screen.blit(self.game.util.skins_page[3], ((132, 395)))
+        else:
+            if(skins[self.page]['cost'] > self.game.config['coins']):
+                self.game.screen.blit(self.game.util.skins_page[2], ((132, 395)))
+            else:
+                self.game.screen.blit(self.game.util.skins_page[1], ((132, 395)))
+
         self.game.screen.blit(self.game.util.coin, ((186, 236)))
         self.game.screen.blit(
             self.game.util.getImage(skins[self.page]['name']),
@@ -38,11 +41,11 @@ class SkinsPage:
             ), ((132, 364))
         )
 
-        left = self.game.screen.blit(self.game.util.skins_page[2], ((16, 306)))
+        left = self.game.screen.blit(self.game.util.skins_page[4], ((16, 306)))
         if left.collidepoint(mouse) and clicked:
             self.left()
 
-        right = self.game.screen.blit(self.game.util.skins_page[3], ((296, 306)))
+        right = self.game.screen.blit(self.game.util.skins_page[5], ((296, 306)))
         if right.collidepoint(mouse) and clicked:
             self.right()
 
@@ -52,13 +55,13 @@ class SkinsPage:
                 self.game.state = 'Menu'
 
     def right(self):
-        if(self.page + 1 >= len(self.config['skins'])):
+        if(self.page + 1 >= len(self.game.config['skins'])):
             self.page = 0
         else:
             self.page += 1
 
     def left(self):
         if(0 > self.page - 1):
-            self.page = len(self.config['skins']) - 1
+            self.page = len(self.game.config['skins']) - 1
         else:
             self.page -= 1
