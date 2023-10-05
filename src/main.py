@@ -31,6 +31,11 @@ class Game:
 
             clicked = False
 
+            if(self.SettingsPage.isPlaying == True):
+                self.util.sounds[2].play()
+            else:
+                self.util.sounds[2].stop()
+
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()

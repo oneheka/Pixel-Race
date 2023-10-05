@@ -36,6 +36,11 @@ class Util:
             pygame.image.load('assets/images/skins/walpuperCar.png').convert_alpha(),
             pygame.image.load('assets/images/skins/aquaCar.png').convert_alpha(),
         ]
+        self.sounds = [
+            pygame.mixer.Sound('assets/music/sound_1.mp3'),
+            pygame.mixer.Sound('assets/music/sound_2.mp3'),
+            pygame.mixer.Sound('assets/music/sound_3.mp3')
+        ]
     
     def getImage(self, name):
         if(name == 'Eronary'):
