@@ -52,13 +52,13 @@ class Util:
         #]
 
         self.sounds = []
-        for filename in os.listdir('assets/music'):
-            self.sounds.append(
-                {
-                    'name': (filename.split('.')[0]),
-                    'file': pygame.mixer.Sound(f'assets/music/{filename}'),
-                }
-            )
+        #for filename in os.listdir('assets/music'):
+            #self.sounds.append(
+            #    {
+            #        'name': (filename.split('.')[0]),
+            #        'file': pygame.mixer.Sound(f'assets/music/{filename}'),
+            #    }
+            #)
 
     
     def getImage(self, name):

@@ -13,7 +13,6 @@ class PlayPage:
 
         for i in self.game.config['skins']:
             if i['default'] == True:
-                # print(i['name'])
                 self.game.screen.blit(
                     self.game.util.getImage(i['name']),
                     ((self.car_x, 552))
