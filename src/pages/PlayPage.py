@@ -26,5 +26,6 @@ class PlayPage:
             self.car_x += 2
         elif keys[pygame.K_SPACE]:
             if(self.game.state != "Menu"):
+                self.car_x = 152
                 self.game.state = 'Menu'
         
