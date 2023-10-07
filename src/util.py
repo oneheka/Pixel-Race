@@ -45,12 +45,7 @@ class Util:
         self.opponents = [
             pygame.image.load('assets/images/opponents/opponent_1.png').convert_alpha()
         ]
-        #self.sounds = [
-        #    pygame.mixer.Sound('assets/music/sound_1.mp3'),
-        #    pygame.mixer.Sound('assets/music/sound_2.mp3'),
-        #    pygame.mixer.Sound('assets/music/sound_3.mp3')
-        #]
-
+        
         self.sounds = []
         #for filename in os.listdir('assets/music'):
             #self.sounds.append(
