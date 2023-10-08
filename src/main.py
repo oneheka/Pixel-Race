@@ -17,6 +17,7 @@ class Game:
     getSound = 0
     util = Util()
     state = 'Menu'
+    gameMetrs = 0
 
     def __init__(self):
         self.MainPage = MainPage(self)
@@ -44,8 +45,12 @@ class Game:
 
     def build(self):
         pygame.display.set_icon(self.util.icon)
+
         while(bool(self.state)):
             self.screen.blit(self.util.background, ((0, 0)))
+
+            if(self.PlayPage.metrs > 0):
+                self.PlayPage.metrs += 1
 
             clicked = False
 

@@ -3,7 +3,7 @@ import os
 
 class Util:
     def __init__(self):
-        self.mainfont = pygame.font.Font('fonts/efnmacstyle8px.ttf', 20)
+        self.mainfont = pygame.font.Font('fonts/efnmacstyle8px.ttf', 24)
         self.buttons = [
             pygame.image.load('assets/images/buttons/playButton.png').convert_alpha(),
             pygame.image.load('assets/images/buttons/skinsButton.png').convert_alpha()
@@ -47,13 +47,13 @@ class Util:
         ]
         
         self.sounds = []
-        #for filename in os.listdir('assets/music'):
-            #self.sounds.append(
-            #    {
-            #        'name': (filename.split('.')[0]),
-            #        'file': pygame.mixer.Sound(f'assets/music/{filename}'),
-            #    }
-            #)
+        for filename in os.listdir('assets/music'):
+            self.sounds.append(
+                {
+                    'name': (filename.split('.')[0]),
+                    'file': pygame.mixer.Sound(f'assets/music/{filename}'),
+                }
+            )
 
     
     def getImage(self, name):

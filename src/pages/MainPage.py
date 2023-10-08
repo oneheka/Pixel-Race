@@ -17,13 +17,13 @@ class MainPage:
         self.game.screen.blit(
             self.game.util.mainfont.render(
                 str(self.game.config['record'])+'m', False, 'white'
-            ), ((23, 23))
+            ), ((22, 24))
         )
 
         self.game.screen.blit(
             self.game.util.mainfont.render(
                 str(self.game.config['coins']), False, 'white'
-            ), ((23, 74))
+            ), ((22, 75))
         )
 
         settings = self.game.screen.blit(self.game.util.settings[0], ((305, 15)))
@@ -33,6 +33,7 @@ class MainPage:
         play = self.game.screen.blit(self.game.util.buttons[0], ((90, 261)))
         if play.collidepoint(mouse) and clicked:
             if(self.game.state != "Play"):
+                self.game.PlayPage.startGame()
                 self.game.state = 'Play'
         skins = self.game.screen.blit(self.game.util.buttons[1], ((90, 334)))
         if skins.collidepoint(mouse) and clicked:

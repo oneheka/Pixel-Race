@@ -55,10 +55,9 @@ class SkinsPage:
                 str(skins[self.page]['cost']), False, 'white'
             ), ((149, 238))
         )
+        name = self.game.util.mainfont.render(skins[self.page]['name'], False, 'white')
         self.game.screen.blit(
-            self.game.util.mainfont.render(
-                skins[self.page]['name'], False, 'white'
-            ), ((132, 364))
+            name, name.get_rect(center=(self.game.screen.get_size()[0]/2, 370))
         )
 
         left = self.game.screen.blit(self.game.util.skins_page[4], ((16, 306)))
