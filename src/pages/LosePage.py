@@ -7,9 +7,9 @@ class LosePage:
     def render(self, clicked):
         mouse = pygame.mouse.get_pos()
 
-        self.game.screen.blit(self.game.util.skins[0], ((152, self.game.eronary_y + 1000)))
-        self.game.screen.blit(self.game.util.skins[1], ((28, self.game.walpuper_y + 1000)))
-        self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
+        # self.game.screen.blit(self.game.util.skins[0], ((152, self.game.eronary_y + 1000)))
+        # self.game.screen.blit(self.game.util.skins[1], ((28, self.game.walpuper_y + 1000)))
+        # self.game.screen.blit(self.game.util.skins[2], ((276, self.game.aqua_y + 1000)))
         self.game.screen.blit(self.game.util.darkerBackground, ((0, 0)))
         self.game.screen.blit(self.game.util.lose_page[0], ((32, 201)))
         self.game.screen.blit(self.game.util.lose_page[1], ((78, 247)))

@@ -46,15 +46,15 @@ class PlayPage:
                 str(self.coins), False, 'white'
             ), ((22, 75))
         )
-
-        for i in self.game.config['skins']:
-            if i['default'] == True:
-                self.car_rect = self.game.util.getImage(i['name']).get_rect(topleft=(self.car_x, self.car_y))
-                self.game.screen.blit(
-                    self.game.util.getImage(i['name']),
-                    ((self.car_x, self.car_y))
-                )
     
+        for i in self.game.config['skins']:
+                if i['default'] == True:
+                    self.car_rect = self.game.util.getImage(i['name']).get_rect(topleft=(self.car_x, self.car_y))
+                    self.game.screen.blit(
+                        self.game.util.getImage(i['name']),
+                        ((self.car_x, self.car_y))
+                    )
+        
     def startGame(self):
         self.car_x = 152
         self.metrs = 1
@@ -84,13 +84,12 @@ class PlayPage:
         
     def handler(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and self.car_x > 19:
-            self.car_x -= 2
-        elif keys[pygame.K_RIGHT] and self.car_x < 277:
-            self.car_x += 2
-        elif keys[pygame.K_SPACE]:
-            self.gameOver()
-    
+        if(not self.game.paused):
+            if keys[pygame.K_LEFT] and self.car_x > 19:
+                self.car_x -= 2
+            elif keys[pygame.K_RIGHT] and self.car_x < 277:
+                self.car_x += 2
+
     def getY(self):
         if(100 > round(self.metrs / self.added)):
             return 1.5
@@ -112,17 +111,18 @@ class PlayPage:
             return 7
     
     def updtaeItems(self):
-        if(round(self.metrs / self.added) > self.lastAdd):
-            count = random.randint(1, 2)
-            ignore = []
-            for i in range(count):
-                self.lastAdd += self.added
-                x = self.randomX(ignore)
-                ignore.append(x)
-                item = self.randomItem()
-                item['y'] = 0
-                item['x'] = x
-                self.items.append(item)
+        if(not self.game.paused):
+            if(round(self.metrs / self.added) > self.lastAdd):
+                count = random.randint(1, 2)
+                ignore = []
+                for i in range(count):
+                    self.lastAdd += self.added
+                    x = self.randomX(ignore)
+                    ignore.append(x)
+                    item = self.randomItem()
+                    item['y'] = 0
+                    item['x'] = x
+                    self.items.append(item)
         
         for item in self.items:
             item['y'] += self.getY()

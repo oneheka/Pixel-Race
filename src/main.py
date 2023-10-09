@@ -15,6 +15,7 @@ class Game:
     eronary_y = 0
     walpuper_y = 0
     aqua_y = 0
+    paused = False
     getSound = 0
     util = Util()
     state = 'Menu'
@@ -51,10 +52,12 @@ class Game:
 
         while(bool(self.state)):
             self.screen.blit(self.util.background, ((0, 0)))
-            if(self.PlayPage.metrs > 0):
-                self.PlayPage.metrs += 1
-
             clicked = False
+
+            if(not self.paused):
+                if(self.PlayPage.metrs > 0):
+                    self.PlayPage.metrs += 1
+
 
             self.updatePlaying()
 
@@ -64,7 +67,14 @@ class Game:
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         clicked = True
-            
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        if(not self.paused):
+                            self.paused = True
+                        elif(self.paused):
+                            self.paused = False
+
+
             self.setCarAnimation()
 
             if(self.state == 'Menu'):
