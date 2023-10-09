@@ -22,13 +22,14 @@ class LosePage:
         )
         self.game.screen.blit(
             self.game.util.mainfont.render(
-                'Собрал : ' + str(self.game.lastStars), False, 'white'
+                'Собрал: ' + str(self.game.lastStars), False, 'white'
             ), ((117, 331))
         )
         self.game.screen.blit(self.game.util.coin, ((230, 330)))
         if menu.collidepoint(mouse) and clicked:
             if(self.game.state != "Menu"):
                 self.game.state = "Menu"
+                
         if again.collidepoint(mouse) and clicked:
             if(self.game.state != "Play"):
                 self.game.state = "Play"
