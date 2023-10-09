@@ -61,6 +61,8 @@ class PlayPage:
         self.coins = 0
     
     def gameOver(self):
+        self.game.lastStars = self.coins
+        self.game.lastMetrs = self.game.config['record'] = round(self.metrs / self.added)
         self.game.config['coins'] += self.coins
         if(round(self.metrs / self.added) > self.game.config['record']):
             self.game.config['record'] = round(self.metrs / self.added)
@@ -87,8 +89,7 @@ class PlayPage:
         elif keys[pygame.K_RIGHT] and self.car_x < 277:
             self.car_x += 2
         elif keys[pygame.K_SPACE]:
-            if(self.game.state != "Menu"):
-                self.game.state = 'Menu'
+            self.gameOver()
     
     def getY(self):
         if(100 > round(self.metrs / self.added)):

@@ -18,8 +18,8 @@ class Game:
     getSound = 0
     util = Util()
     state = 'Menu'
-    gameMetrs = 0
-    gameStars = 0
+    lastMetrs = 0
+    lastStars = 0
 
     def __init__(self):
         self.MainPage = MainPage(self)
