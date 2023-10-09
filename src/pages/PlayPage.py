@@ -29,7 +29,9 @@ class PlayPage:
         self.items = []
 
     def render(self):
-        self.handler()
+        if(not self.game.paused):
+            self.handler()
+        
         self.updtaeItems()
 
         self.game.screen.blit(self.game.util.record, ((15, 15)))
@@ -120,12 +122,14 @@ class PlayPage:
                     x = self.randomX(ignore)
                     ignore.append(x)
                     item = self.randomItem()
-                    item['y'] = 0
+                    item['y'] = -80
                     item['x'] = x
                     self.items.append(item)
         
         for item in self.items:
-            item['y'] += self.getY()
+            if(not self.game.paused):
+                item['y'] += self.getY()
+
             if(item['file'].get_rect(topleft=(item['x'], item['y'])).colliderect(self.car_rect)):
                 if(item['id'] == 'coin'):
                     self.coins += 1

@@ -68,7 +68,7 @@ class Game:
                     if event.button == 1:
                         clicked = True
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
+                    if event.key == pygame.K_SPACE and self.state == 'Play':
                         if(not self.paused):
                             self.paused = True
                         elif(self.paused):
@@ -76,7 +76,7 @@ class Game:
 
 
             self.setCarAnimation()
-
+            
             if(self.state == 'Menu'):
                 self.MainPage.render(clicked)
             elif(self.state == 'Settings'):
