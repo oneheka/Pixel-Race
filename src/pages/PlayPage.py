@@ -62,7 +62,7 @@ class PlayPage:
     
     def gameOver(self):
         self.game.lastStars = self.coins
-        self.game.lastMetrs = self.game.config['record'] = round(self.metrs / self.added)
+        self.game.lastMetrs = round(self.metrs / self.added)
         self.game.config['coins'] += self.coins
         if(round(self.metrs / self.added) > self.game.config['record']):
             self.game.config['record'] = round(self.metrs / self.added)

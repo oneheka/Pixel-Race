@@ -22,7 +22,7 @@ class LosePage:
         )
         self.game.screen.blit(
             self.game.util.mainfont.render(
-                'Собрал : ' + str(self.game.lastMetrs), False, 'white'
+                'Собрал : ' + str(self.game.lastStars), False, 'white'
             ), ((117, 331))
         )
         self.game.screen.blit(self.game.util.coin, ((230, 330)))
