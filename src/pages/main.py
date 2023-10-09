@@ -19,14 +19,13 @@ class Game:
     util = Util()
     state = 'Menu'
     gameMetrs = 0
-    gameStars = 0
 
     def __init__(self):
         self.MainPage = MainPage(self)
         self.SkinsPage = SkinsPage(self)
         self.SettingsPage = SettingsPage(self)
         self.PlayPage = PlayPage(self)
-        self.LosePage = LosePage(self)
+        self.LosePage = LosePage(self, self.PlayPage.total_metrs)
 
         with open('src/config.json') as f:
             file_content = f.read()
@@ -51,6 +50,7 @@ class Game:
 
         while(bool(self.state)):
             self.screen.blit(self.util.background, ((0, 0)))
+            print(self.PlayPage.total_metrs)
             if(self.PlayPage.metrs > 0):
                 self.PlayPage.metrs += 1
 

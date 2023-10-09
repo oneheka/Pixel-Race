@@ -41,8 +41,11 @@ class Util:
             pygame.image.load('assets/images/skins/walpuperCar.png').convert_alpha(),
             pygame.image.load('assets/images/skins/aquaCar.png').convert_alpha(),
         ]
-        self.opponents = [
-            pygame.image.load('assets/images/opponents/opponent_1.png').convert_alpha()
+        self.lose_page = [
+            pygame.image.load('assets/images/lose_bg.png').convert_alpha(),
+            pygame.image.load('assets/images/urlost_text.png').convert_alpha(),
+            pygame.image.load('assets/images/buttons/againButton.png').convert_alpha(),
+            pygame.image.load('assets/images/buttons/menuButton.png').convert_alpha(),
         ]
         
         self.sounds = []

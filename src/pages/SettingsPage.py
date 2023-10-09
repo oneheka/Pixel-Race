@@ -36,7 +36,7 @@ class SettingsPage:
                         for j in range(len(self.game.util.sounds)):
                             self.game.util.sounds[j]['file'].stop()
                         self.game.getSound = i
-                        self.game.util.sounds[i]['file'].play()
+                        self.game.util.sounds[i]['file'].play(-1)
         else:
             select_m = self.game.screen.blit(self.game.util.settings[5], ((50, 360.5)))
         self.game.screen.blit(self.game.util.settings[6], ((82, 311.5)))

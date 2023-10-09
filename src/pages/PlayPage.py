@@ -11,10 +11,11 @@ class PlayPage:
         self.coins = 0
         self.metrs = 0
         self.lastAdd = 10
+        self.car_rect = 0
         self.staticItems = [
             {
                 'id': 'coin',
-                'file': game.util.coin,
+                'file': self.game.util.coin,
                 'y': 0,
                 'x': 32
             },
@@ -28,12 +29,12 @@ class PlayPage:
         self.items = []
 
     def render(self):
-        self.game.screen.blit(self.game.util.record, ((15, 15)))
-        self.game.screen.blit(self.game.util.coins, ((15, 66)))
-        
         self.handler()
         self.updtaeItems()
 
+        self.game.screen.blit(self.game.util.record, ((15, 15)))
+        self.game.screen.blit(self.game.util.coins, ((15, 66)))
+        
         self.game.screen.blit(
             self.game.util.mainfont.render(
                 str(round(self.metrs / self.added))+'m', False, 'white'
@@ -48,6 +49,7 @@ class PlayPage:
 
         for i in self.game.config['skins']:
             if i['default'] == True:
+                self.car_rect = self.game.util.getImage(i['name']).get_rect(topleft=(self.car_x, self.car_y))
                 self.game.screen.blit(
                     self.game.util.getImage(i['name']),
                     ((self.car_x, self.car_y))
@@ -68,8 +70,8 @@ class PlayPage:
         self.lastAdd = 10
         self.items = []
         self.game.updateConfig(self.game.config)
-        if(self.game.state != "Menu"):
-            self.game.state = 'Menu'
+        if(self.game.state != "Lose"):
+            self.game.state = 'Lose'
     
     def randomItem(self):
         return self.staticItems[random.randint(0, len(self.staticItems)-1)].copy()
@@ -123,8 +125,7 @@ class PlayPage:
         
         for item in self.items:
             item['y'] += self.getY()
-            
-            if(self.car_x > item['x']-24 and item['x']+24 > self.car_x and item['y'] > self.car_y and self.car_y + 100 > item['y']):
+            if(item['file'].get_rect(topleft=(item['x'], item['y'])).colliderect(self.car_rect)):
                 if(item['id'] == 'coin'):
                     self.coins += 1
                     self.items.remove(item)
