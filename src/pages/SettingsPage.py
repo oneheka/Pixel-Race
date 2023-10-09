@@ -22,12 +22,13 @@ class SettingsPage:
         if(self.select):
             y = 400
             select_m = self.game.screen.blit(self.game.util.settings[7], ((50, 360.5)))
+            pygame.draw.rect(self.game.screen, (10, 12, 15), (50, y-4, 260, 43 * len(self.game.util.sounds)), border_radius=8)
             for i in range(len(self.game.util.sounds)):
                 btn = self.game.screen.blit(self.game.util.settings[8 if self.game.getSound == i else 9], ((57, y)))
                 self.game.screen.blit(
                     self.game.util.mainfont.render(
                         self.game.util.sounds[i]['name'], False, 'white'
-                    ), ((62, y+4))
+                    ), ((62, y+6))
                 )
                 y += 43
                 if btn.collidepoint(mouse) and clicked:

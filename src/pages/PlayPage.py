@@ -58,6 +58,9 @@ class PlayPage:
     
     def gameOver(self):
         self.game.config['coins'] += self.coins
+        if(round(self.metrs / 15) > self.game.config['record']):
+            self.game.config['record'] = round(self.metrs / 15)
+            self.game.updateConfig(self.game.config)
         self.coins = 0
         self.metrs = 0
         self.lastAdd = 10
