@@ -22,8 +22,7 @@ class Util:
                 pygame.image.load('assets/images/buttons/setButton.png').convert_alpha(),
                 pygame.image.load('assets/images/buttons/leftArrow.png').convert_alpha(),
                 pygame.image.load('assets/images/buttons/rightArrow.png').convert_alpha(),
-                pygame.image.load('assets/images/buttons/settedButton.png').convert_alpha(),
-                pygame.image.load('assets/images/buttons/boughtButton.png').convert_alpha()
+                pygame.image.load('assets/images/buttons/settedButton.png').convert_alpha()
         ]
         self.settings = [
             pygame.image.load('assets/images/settings.png').convert_alpha(),
