@@ -2,6 +2,8 @@ import pygame
 import random
 
 class PlayPage:
+    added = 15
+
     def __init__(self, game):
         self.game = game
         self.car_x = 152
@@ -34,7 +36,7 @@ class PlayPage:
 
         self.game.screen.blit(
             self.game.util.mainfont.render(
-                str(round(self.metrs / 15))+'m', False, 'white'
+                str(round(self.metrs / self.added))+'m', False, 'white'
             ), ((22, 24))
         )
 
@@ -58,8 +60,8 @@ class PlayPage:
     
     def gameOver(self):
         self.game.config['coins'] += self.coins
-        if(round(self.metrs / 15) > self.game.config['record']):
-            self.game.config['record'] = round(self.metrs / 15)
+        if(round(self.metrs / self.added) > self.game.config['record']):
+            self.game.config['record'] = round(self.metrs / self.added)
             self.game.updateConfig(self.game.config)
         self.coins = 0
         self.metrs = 0
@@ -72,8 +74,8 @@ class PlayPage:
     def randomItem(self):
         return self.staticItems[random.randint(0, len(self.staticItems)-1)].copy()
     
-    def randomX(self):
-        x = [ 32, 150, 274 ]
+    def randomX(self, ignore):
+        x = list(filter(lambda n: n not in ignore, [ 32, 150, 274 ]))
         return x[random.randint(0, len(x)-1)]
         
     def handler(self):
@@ -87,24 +89,37 @@ class PlayPage:
                 self.game.state = 'Menu'
     
     def getY(self):
-        if(100 > round(self.metrs / 15)):
+        if(100 > round(self.metrs / self.added)):
             return 1.5
-        elif(250 > round(self.metrs / 15)):
+        elif(250 > round(self.metrs / self.added)):
             return 2
-        elif(500 > round(self.metrs / 15)):
+        elif(500 > round(self.metrs / self.added)):
             return 2.5
-        elif(750 > round(self.metrs / 15)):
+        elif(750 > round(self.metrs / self.added)):
             return 3
-        else:
+        elif(1000 > round(self.metrs / self.added)):
             return 3.5
+        elif(1250 > round(self.metrs / self.added)):
+            return 4
+        elif(1500 > round(self.metrs / self.added)):
+            return 5
+        elif(1750 > round(self.metrs / self.added)):
+            return 6
+        else:
+            return 7
     
     def updtaeItems(self):
-        if(round(self.metrs / 15) > self.lastAdd):
-            self.lastAdd += 15
-            item = self.randomItem()
-            item['y'] = 0
-            item['x'] = self.randomX()
-            self.items.append(item)
+        if(round(self.metrs / self.added) > self.lastAdd):
+            count = random.randint(1, 2)
+            ignore = []
+            for i in range(count):
+                self.lastAdd += self.added
+                x = self.randomX(ignore)
+                ignore.append(x)
+                item = self.randomItem()
+                item['y'] = 0
+                item['x'] = x
+                self.items.append(item)
         
         for item in self.items:
             item['y'] += self.getY()
