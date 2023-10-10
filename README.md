@@ -2,16 +2,14 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
-**Open to collaborative development.**
-
 Простая 2D игра по тематике гонок.
 
 __Version__ : 0.0.7 beta
 
-![Главное меню](images/screenshots/mainmenu.png?raw=True)
-![Настройки](images/screenshots/settings.png?raw=True)
-![Магазин скинов](images/screenshots/store.png?raw=True)
-![Геймплей](images/screenshots/gameplay.png?raw=True)
+![Главное меню](assets/images/screenshots/mainmenu.png?raw=True)
+![Настройки](assets/images/screenshots/settings.png?raw=True)
+![Магазин скинов](assets/images/screenshots/store.png?raw=True)
+![Геймплей](assets/images/screenshots/gameplay.png?raw=True)
 
 ## Как запустить игру
 
