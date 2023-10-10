@@ -10,7 +10,7 @@ from util import Util
 pygame.init()
 class Game:
     screen = pygame.display.set_mode((360, 660))
-    pygame.display.set_caption('Niako Game')
+    pygame.display.set_caption('Pixel Race')
     isPlaying = False
     eronary_y = 0
     walpuper_y = 0
