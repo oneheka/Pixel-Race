@@ -1,17 +1,17 @@
 import pygame
-from struct.Window import Window
+from str.Window import Window
 
 class Game:
-    self.window = Window()
+    window = Window()
 
-    def __init__():
+    def __init__(self):
         pygame.init()
     
 
     #def build():
         #pygame.display.set_icon(self.util.icon)
 
-    def start():
+    def start(self):
         while True:
             pygame.display.update()
             pygame.time.Clock().tick(300)
