@@ -6,10 +6,10 @@
 
 __Version__ : 0.0.7 beta
 
-![Главное меню](assets/images/screenshots/mainmenu.png?raw=True)
-![Настройки](assets/images/screenshots/settings.png?raw=True)
-![Магазин скинов](assets/images/screenshots/store.png?raw=True)
-![Геймплей](assets/images/screenshots/gameplay.png?raw=True)
+![Главное меню](assets/readme/mainmenu.png?raw=True)
+![Настройки](assets/readme/settings.png?raw=True)
+![Магазин скинов](assets/readme/shop.png?raw=True)
+![Геймплей](assets/readme/gameplay.png?raw=True)
 
 ## Как запустить игру
 
