@@ -54,4 +54,5 @@ class Settings:
         settings = self.core.window.blit(self.core.images.settings['close'], (305, 15))
         if settings.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
+                self.select = False
                 self.core.page = 'menu'
