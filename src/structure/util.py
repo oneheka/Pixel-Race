@@ -23,7 +23,7 @@ class Util:
         
     @property
     def config(self):
-        if(str(self._config) == '{}'):
+        if(self._config == {}):
             self._config = self.getConfig()
         
         return self._config
