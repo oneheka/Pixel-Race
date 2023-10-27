@@ -1,4 +1,5 @@
 import pygame
+import os
 
 class Image:
     def load(self):
@@ -53,6 +54,15 @@ class Image:
             'left': pygame.image.load('assets/images/arrow/Left.png').convert_alpha(),
             'right': pygame.image.load('assets/images/arrow/Right.png').convert_alpha()
         }
+        self._loadOpponents()
+        
     
     def getSkin(self, name):
         return self.skins[name]
+    
+    def _loadOpponents(self):
+        self.opponents = []
+        for filename in os.listdir('assets/images/opponents'):
+            self.opponents.append(
+                pygame.image.load(f'assets/images/opponents/{filename}').convert_alpha(),
+            )

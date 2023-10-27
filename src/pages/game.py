@@ -18,13 +18,19 @@ class Game:
                 'id': 'coin',
                 'file': core.images.coins['big'],
                 'y': 0,
-                'x': 32
+                'x': 0
             },
             {
                 'id': 'car',
-                'file': core.images.skins['walpuper'],
+                'file': core.images.opponents[0],
                 'y': 0,
-                'x': 144
+                'x': 0
+            },
+            {
+                'id': 'car',
+                'file': core.images.opponents[1],
+                'y': 0,
+                'x': 0
             }
         ]
 
