@@ -1,3 +1,5 @@
+# todo: спидометр
+
 import pygame
 import random
 

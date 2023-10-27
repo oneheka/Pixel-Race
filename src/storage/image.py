@@ -1,3 +1,5 @@
+# todo: авто лоад машин
+
 import pygame
 import os
 
