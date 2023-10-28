@@ -42,7 +42,7 @@ class Core(Util):
         pygame.display.set_icon(self.images.logo)
 
         while True:
-            self.window.blit(self.images.background, (0, 0))
+            self.window.blit(self.images.asphalt[self.config['theme']], (0, 0))
 
             if(not self.paused):
                 if(self.pages['game'].metrs > 0):

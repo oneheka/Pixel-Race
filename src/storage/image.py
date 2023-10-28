@@ -35,6 +35,7 @@ class Image:
         }
         self.texts = {
             'sound': pygame.image.load('assets/images/text/Sound.png').convert_alpha(),
+            'night': pygame.image.load('assets/images/text/Night.png').convert_alpha(),
             'lose': pygame.image.load('assets/images/text/Lose.png').convert_alpha(),
             'choose_music': pygame.image.load('assets/images/text/ChooseMusic.png').convert_alpha()
         }
@@ -55,6 +56,10 @@ class Image:
         self.arrows = {
             'left': pygame.image.load('assets/images/arrow/Left.png').convert_alpha(),
             'right': pygame.image.load('assets/images/arrow/Right.png').convert_alpha()
+        }
+        self.asphalt = {
+            'day': pygame.image.load('assets/images/asphalt/Day.png').convert_alpha(),
+            'night': pygame.image.load('assets/images/asphalt/Night.png').convert_alpha()
         }
         self._loadOpponents()
         

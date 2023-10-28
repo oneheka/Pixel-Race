@@ -15,20 +15,30 @@ class Settings:
 
         self.core.window.blit(self.core.images.modal, (32, 200))
 
-        self.core.window.blit(self.core.images.texts['sound'], (116, 262.5))
+        self.core.window.blit(self.core.images.texts['sound'], (116, 243))
         if(self.isPlaying):
-            toggle = self.core.window.blit(self.core.images.toggle['on'], (194, 257))
+            toggleSound = self.core.window.blit(self.core.images.toggle['on'], (194, 241))
         else:
-            toggle = self.core.window.blit(self.core.images.toggle['off'], (194, 257))
-        
-        if toggle.collidepoint(mouse) and clicked:
+            toggleSound = self.core.window.blit(self.core.images.toggle['off'], (194, 241))
+
+        if toggleSound.collidepoint(mouse) and clicked:
             self.isPlaying = not self.isPlaying
+
+        self.core.window.blit(self.core.images.texts['night'], (116, 294))
+        if(self.core.config['theme'] == 'night'):
+            toggleNight = self.core.window.blit(self.core.images.toggle['on'], (194, 290))
+        else:
+            toggleNight = self.core.window.blit(self.core.images.toggle['off'], (194, 290))
         
-        self.core.window.blit(self.core.images.texts['choose_music'], (82, 314))
+        if toggleNight.collidepoint(mouse) and clicked:
+            self.core.config['theme'] = 'day' if self.core.config['theme'] == 'night' else 'night'
+            self.core.updateConfig(self.core.config)
+
+        self.core.window.blit(self.core.images.texts['choose_music'], (82, 345))
 
         if(self.select):
-            y = 400
-            select = self.core.window.blit(self.core.images.dropdown['open'], (50, 360.5))
+            y = 420
+            select = self.core.window.blit(self.core.images.dropdown['open'], (50, 385))
             pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4, 260, 43 * len(self.core.sounds.array())), border_radius=8)
             for i in range(len(self.core.sounds.array())):
                 btn = self.core.window.blit(self.core.images.block['active_song' if self.core.sounds.selected == i else 'song'], ((57, y)))
@@ -46,7 +56,7 @@ class Settings:
                         self.core.sounds.array()[i]['file'].play(-1)
                         self.select = False
         else:
-            select = self.core.window.blit(self.core.images.dropdown['close'], (50, 360.5))
+            select = self.core.window.blit(self.core.images.dropdown['close'], (50, 385))
         
         if select.collidepoint(mouse) and clicked:
             self.select = not self.select
