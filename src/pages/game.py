@@ -1,5 +1,3 @@
-# todo: спидометр
-
 import pygame
 import random
 
@@ -41,6 +39,7 @@ class Game:
             self.handler()
         
         self.updtaeItems()
+        self.speedometer()
 
         self.core.window.blit(self.core.images.stats, (15, 15))
         self.core.window.blit(
@@ -64,7 +63,15 @@ class Game:
                     self.core.images.getSkin(i['name'].lower()),
                     (self.car_x, self.car_y)
                 )
-        
+    
+    def speedometer(self):
+        self.core.window.blit(self.core.images.speedometer, (256, 15))
+        pygame.draw.arc(
+            self.core.window, (255, 69, 58), (256, 15, 96, 96),
+            3.14 * 3 / 2, (3.14 * (self.metrs / self.core.config['record'])) - (3.14 / 2), 10
+        )
+
+
     def startGame(self):
         self.car_x = 152
         self.metrs = 1

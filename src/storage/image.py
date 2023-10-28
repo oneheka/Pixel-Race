@@ -10,6 +10,7 @@ class Image:
         self.blur = pygame.image.load('assets/images/Blur.png').convert_alpha()
         self.modal = pygame.image.load('assets/images/Modal.png').convert_alpha()
         self.stats = pygame.image.load('assets/images/Stats.png').convert_alpha()
+        self.speedometer = pygame.image.load('assets/images/Speedometer.png').convert_alpha()
         self.skin_background = pygame.image.load('assets/images/SkinBackground.png').convert_alpha()
         self.toggle = {
             'on': pygame.image.load('assets/images/toggle/On.png').convert_alpha(),
