@@ -31,6 +31,12 @@ class Game:
                 'file': core.images.opponents[1],
                 'y': 0,
                 'x': 0
+            },
+            {
+                'id': 'car',
+                'file': core.images.opponents[2],
+                'y': 0,
+                'x': 0
             }
         ]
 
