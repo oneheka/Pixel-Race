@@ -137,7 +137,7 @@ class Game:
                     x = self.randomX(ignore)
                     ignore.append(x)
                     item = self.randomItem()
-                    item['y'] = -80
+                    item['y'] = random.randint(-110, -80)
                     item['x'] = x
                     self.items.append(item)
         
