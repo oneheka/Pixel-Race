@@ -44,7 +44,7 @@ class Game:
         self.core.window.blit(self.core.images.stats, (15, 15))
         self.core.window.blit(
             self.core.fonts.render(
-                str(round(self.metrs / self.added))+'m'
+                str(self.getMetrs())+'m'
             ), ((22, 24))
         )
 
@@ -66,6 +66,10 @@ class Game:
     
     def speedometer(self):
         self.core.window.blit(self.core.images.speedometer, (256, 15))
+        speed = self.core.fonts.render(self.getMetrs())
+        self.core.window.blit(
+            speed, speed.get_rect(center=(302, 60))
+        )
         pygame.draw.arc(
             self.core.window, (255, 69, 58), (256, 15, 96, 96),
             3.14 * 3 / 2, (3.14 * (self.metrs / self.core.config['record'])) - (3.14 / 2), 10
@@ -79,10 +83,10 @@ class Game:
     
     def gameOver(self):
         self.core.lastStars = self.coins
-        self.core.lastMetrs = round(self.metrs / self.added)
+        self.core.lastMetrs = self.getMetrs()
         self.core.config['coins'] += self.coins
-        if(round(self.metrs / self.added) > self.core.config['record']):
-            self.core.config['record'] = round(self.metrs / self.added)
+        if(self.getMetrs() > self.core.config['record']):
+            self.core.config['record'] = self.getMetrs()
             self.core.updateConfig(self.core.config)
         self.coins = 0
         self.metrs = 0
@@ -108,28 +112,31 @@ class Game:
                 self.car_x += 2
 
     def getY(self):
-        if(100 > round(self.metrs / self.added)):
+        if(100 > self.getMetrs()):
             return 1.5
-        elif(250 > round(self.metrs / self.added)):
+        elif(250 > self.getMetrs()):
             return 2
-        elif(500 > round(self.metrs / self.added)):
+        elif(500 > self.getMetrs()):
             return 2.5
-        elif(750 > round(self.metrs / self.added)):
+        elif(750 > self.getMetrs()):
             return 3
-        elif(1000 > round(self.metrs / self.added)):
+        elif(1000 > self.getMetrs()):
             return 3.5
-        elif(1250 > round(self.metrs / self.added)):
+        elif(1250 > self.getMetrs()):
             return 4
-        elif(1500 > round(self.metrs / self.added)):
+        elif(1500 > self.getMetrs()):
             return 5
-        elif(1750 > round(self.metrs / self.added)):
+        elif(1750 > self.getMetrs()):
             return 6
         else:
             return 7
     
+    def getMetrs(self):
+        return round(self.metrs / self.added)
+    
     def updtaeItems(self):
         if(not self.core.paused):
-            if(round(self.metrs / self.added) > self.lastAdd):
+            if(self.getMetrs() > self.lastAdd):
                 count = random.randint(1, 2)
                 ignore = []
                 for i in range(count):
