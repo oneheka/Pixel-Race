@@ -37,7 +37,7 @@ class Settings:
         self.core.window.blit(self.core.images.texts['choose_music'], (82, 345))
 
         if(self.select):
-            y = 420
+            y = 425
             select = self.core.window.blit(self.core.images.dropdown['open'], (50, 385))
             pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4, 260, 43 * len(self.core.sounds.array())), border_radius=8)
             for i in range(len(self.core.sounds.array())):
