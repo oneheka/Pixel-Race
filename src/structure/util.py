@@ -22,6 +22,9 @@ class Util:
         self.storage['sound'].load()
         self.storage['font'].load()
         self._config = self.getConfig()
+        for i in range(len(self.config['skins'])):
+            if(self._config['skins'][i]['default']):
+                self.selectSkin = i
         
     @property
     def config(self):

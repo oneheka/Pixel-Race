@@ -10,6 +10,7 @@ class Game:
     lastAdd = 10
     car_rect = 0
     items = []
+    speedY = 0
 
     def __init__(self, core):
         self.core = core
@@ -72,7 +73,7 @@ class Game:
     
     def speedometer(self):
         self.core.window.blit(self.core.images.speedometer, (256, 15))
-        speed = self.core.fonts.render(self.getMetrs())
+        speed = self.core.fonts.render(self.formatSpeed())
         self.core.window.blit(
             speed, speed.get_rect(center=(302, 60))
         )
@@ -96,6 +97,7 @@ class Game:
             self.core.updateConfig(self.core.config)
         self.coins = 0
         self.metrs = 0
+        self.speedY = 0
         self.lastAdd = 10
         self.items = []
         self.core.updateConfig(self.core.config)
@@ -140,6 +142,13 @@ class Game:
     def getMetrs(self):
         return round(self.metrs / self.added)
     
+    def getSpeed(self):
+        self.speedY = (self.getMetrs() / 10000 * self.core.config['skins'][self.core.selectSkin]['speed'])
+        return self.speedY
+    
+    def formatSpeed(self):
+        return round(self.speedY * 350)
+    
     def updtaeItems(self):
         if(not self.core.paused):
             if(self.getMetrs() > self.lastAdd):
@@ -156,7 +165,7 @@ class Game:
         
         for item in self.items:
             if(not self.core.paused):
-                item['y'] += self.getY()
+                item['y'] += (self.getY() + self.getSpeed())
 
             if(item['file'].get_rect(topleft=(item['x'], item['y'])).colliderect(self.car_rect)):
                 if(item['id'] == 'coin'):

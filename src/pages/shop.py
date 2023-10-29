@@ -38,6 +38,7 @@ class Shop:
                         if(skins[i]['default']):
                             self.core.config['skins'][i]['default'] = False
                     self.core.config['skins'][self.page]['default'] = True
+                    self.core.selectSkin = self.page
                     self.core.updateConfig(self.core.config)
         else:
             if(skins[self.page]['cost'] > self.core.config['coins']):
