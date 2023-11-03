@@ -79,7 +79,7 @@ class Game:
         )
         pygame.draw.arc(
             self.core.window, (255, 69, 58), (256, 15, 96, 96),
-            3.14 * 3 / 2, (3.14 * (self.metrs / self.core.config['record'])) - (3.14 / 2), 10
+            3.14 * 3 / 2, self.speedY + (3.14 * 3 / 2), 10
         )
 
 
@@ -142,8 +142,11 @@ class Game:
     def getMetrs(self):
         return round(self.metrs / self.added)
     
+    def formulaSpeed(self, count):
+        return self.getMetrs() / 10000 * count
+    
     def getSpeed(self):
-        self.speedY = (self.getMetrs() / 10000 * self.core.config['skins'][self.core.selectSkin]['speed'])
+        self.speedY = self.formulaSpeed(self.core.config['skins'][self.core.selectSkin]['speed'])
         return self.speedY
     
     def formatSpeed(self):
