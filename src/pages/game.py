@@ -79,7 +79,7 @@ class Game:
         )
         pygame.draw.arc(
             self.core.window, (255, 69, 58), (256, 15, 96, 96),
-            3.14 * 3 / 2, self.speedY + (3.14 * 3 / 2), 10
+            3.14 * 3 / 2, self.formulaSpeed(3.14) * 16 + (3.14 * 3 / 2), 10
         )
 
 
