@@ -41,11 +41,11 @@ class Settings:
             select = self.core.window.blit(self.core.images.dropdown['open'], (50, 385))
             pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4, 260, 43 * len(self.core.sounds.array())), border_radius=8)
             for i in range(len(self.core.sounds.array())):
-                btn = self.core.window.blit(self.core.images.block['active_song' if self.core.sounds.selected == i else 'song'], ((57, y)))
+                btn = self.core.window.blit(self.core.images.block['active_song' if self.core.sounds.selected == i else 'song'], ((62, y)))
                 self.core.window.blit(
                     self.core.fonts.render(
                         self.core.sounds.array()[i]['label']
-                    ), (62, y+6)
+                    ), (67, y+6)
                 )
                 y += 43
                 if btn.collidepoint(mouse) and clicked:
