@@ -16,19 +16,13 @@ class Settings:
         self.core.window.blit(self.core.images.modal, (32, 200))
 
         self.core.window.blit(self.core.images.texts['sound'], (116, 243))
-        if(self.isPlaying):
-            toggleSound = self.core.window.blit(self.core.images.toggle['on'], (194, 241))
-        else:
-            toggleSound = self.core.window.blit(self.core.images.toggle['off'], (194, 241))
+        toggleSound = self.core.components.switcher(self.isPlaying, (194, 241))
 
         if toggleSound.collidepoint(mouse) and clicked:
             self.isPlaying = not self.isPlaying
 
         self.core.window.blit(self.core.images.texts['night'], (116, 294))
-        if(self.core.config['theme'] == 'night'):
-            toggleNight = self.core.window.blit(self.core.images.toggle['on'], (194, 290))
-        else:
-            toggleNight = self.core.window.blit(self.core.images.toggle['off'], (194, 290))
+        toggleNight = self.core.components.switcher(self.core.config['theme'] == 'night', (194, 290))
         
         if toggleNight.collidepoint(mouse) and clicked:
             self.core.config['theme'] = 'day' if self.core.config['theme'] == 'night' else 'night'
@@ -61,7 +55,7 @@ class Settings:
         if select.collidepoint(mouse) and clicked:
             self.select = not self.select
 
-        settings = self.core.window.blit(self.core.images.settings['close'], (305, 15))
+        settings = self.core.components.settings(False, (305, 15))
         if settings.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
                 self.select = False

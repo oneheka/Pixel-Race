@@ -10,8 +10,7 @@ class Lose:
         self.core.window.blit(self.core.images.blur, (0, 0))
         self.core.window.blit(self.core.images.modal, (32, 201))
         self.core.window.blit(self.core.images.texts['lose'], (78, 247))
-        again = self.core.window.blit(self.core.images.buttons['again'], (76, 380))
-        menu = self.core.window.blit(self.core.images.buttons['menu'], (188, 380))
+
         self.core.window.blit(
             self.core.fonts.render(
                 'Проехали: ' + str(self.core.lastMetrs)+'m'
@@ -23,10 +22,13 @@ class Lose:
             ), (117, 331)
         )
         self.core.window.blit(self.core.images.coins['small'], (230, 330))
+
+        menu = self.core.window.blit(self.core.images.buttons['menu'], (188, 380))
         if menu.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
                 self.core.page = 'menu'
                 
+        again = self.core.window.blit(self.core.images.buttons['again'], (76, 380))
         if again.collidepoint(mouse) and clicked:
             if(self.core.page != 'game'):
                 self.core.pages['game'].startGame()

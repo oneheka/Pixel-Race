@@ -1,7 +1,5 @@
-# todo: апдейт конфига под автолоайд машин
-
-from storage.sound import Sound
 from storage.image import Image
+from storage.sound import Sound
 from storage.font import Font
 import json
 

@@ -25,7 +25,7 @@ class Menu:
             ), (22, 74)
         )
         
-        settings = self.core.window.blit(self.core.images.settings['open'], (305, 15))
+        settings = self.core.components.settings(True, (305, 15))
         if settings.collidepoint(mouse) and clicked:
             if(self.core.page != 'settings'):
                 self.core.page = 'settings'

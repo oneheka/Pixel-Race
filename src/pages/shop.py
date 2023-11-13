@@ -20,7 +20,7 @@ class Shop:
             ), (22, 23)
         )
         
-        settings = self.core.window.blit(self.core.images.settings['close'], (305, 15))
+        settings = self.core.components.settings(False, (305, 15))
         if settings.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
                 self.core.page = 'menu'
@@ -66,7 +66,6 @@ class Shop:
         self.core.window.blit(
             name, name.get_rect(center=(self.core.window.get_size()[0]/2, 380))
         )
-
 
         left = self.core.window.blit(self.core.images.arrows['left'], (16, 306))
         if left.collidepoint(mouse) and clicked:

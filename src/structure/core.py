@@ -1,9 +1,10 @@
+from storage.components import Components
+from structure.util import Util
 from pages.settings import Settings
 from pages.lose import Lose
 from pages.game import Game
 from pages.shop import Shop
 from pages.menu import Menu
-from structure.util import Util
 import pygame
 
 class Core(Util):
@@ -16,6 +17,7 @@ class Core(Util):
     def __init__(self):
         pygame.init()
         self.load()
+        self.components = Components(self)
         self.pages = {
             'menu': Menu(self),
             'settings': Settings(self),
