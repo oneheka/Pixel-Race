@@ -25,7 +25,7 @@ class Shop:
             if(self.core.page != 'menu'):
                 self.core.page = 'menu'
         
-        self.core.window.blit(self.core.images.skin_background, (101, 200))
+        self.core.window.blit(self.core.images.skin_wrapper, (101, 200))
 
         skins = self.core.config['skins']
         if(skins[self.page]['has']):
