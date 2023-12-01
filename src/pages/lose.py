@@ -26,10 +26,10 @@ class Lose:
         menu = self.core.window.blit(self.core.images.buttons['menu'], (188, 380))
         if menu.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
-                self.core.page = 'menu'
-                
+                self.core.updatePage('menu')
+
         again = self.core.window.blit(self.core.images.buttons['again'], (76, 380))
         if again.collidepoint(mouse) and clicked:
             if(self.core.page != 'game'):
                 self.core.pages['game'].startGame()
-                self.core.page = 'game'
+                self.core.updatePage('game')

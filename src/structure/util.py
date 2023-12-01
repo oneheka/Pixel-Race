@@ -1,6 +1,7 @@
 from storage.image import Image
 from storage.sound import Sound
 from storage.font import Font
+import random
 import json
 
 class Util:
@@ -11,6 +12,7 @@ class Util:
         'sound': Sound(),
         'font': Font()
     }
+    selectFact = 0
     eronary_y = 0
     walpuper_y = 0
     aqua_y = 0
@@ -53,6 +55,12 @@ class Util:
             f.seek(0)
             json.dump(config, f)
             f.truncate()
+    
+    def randomArray(self, array):
+        return array[self.random(0, len(array)-1)]
+    
+    def random(self, min, max):
+        return random.randint(min, max)
     
     def updateCarAnimation(self):
         self.eronary_y -= 2

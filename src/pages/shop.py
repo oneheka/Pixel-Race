@@ -23,8 +23,8 @@ class Shop:
         settings = self.core.components.settings(False, (305, 15))
         if settings.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
-                self.core.page = 'menu'
-        
+                self.core.updatePage('menu')
+
         self.core.window.blit(self.core.images.skin_wrapper, (101, 200))
 
         skins = self.core.config['skins']

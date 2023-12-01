@@ -59,4 +59,4 @@ class Settings:
         if settings.collidepoint(mouse) and clicked:
             if(self.core.page != 'menu'):
                 self.select = False
-                self.core.page = 'menu'
+                self.core.updatePage('menu')
