@@ -57,7 +57,7 @@ class Util:
             f.truncate()
     
     def randomArray(self, array):
-        return array[self.random(0, len(array)-1)]
+        return array[self.random(0, len(array))]
     
     def random(self, min, max):
         return random.randint(min, max)
