@@ -12,12 +12,6 @@ class Settings:
     def render(self, clicked, scrolled):
         mouse = pygame.mouse.get_pos()
 
-        if(scrolled and self.select):
-            if(scrolled == 4 and self.scrollTop-43*self._maxSelectCount > -43*len(self.core.sounds.array())):
-                self.scrollTop -= 10
-            elif(0 > self.scrollTop):
-                self.scrollTop += 10
-        
         self.core.setCarAnimation()
         self.core.window.blit(self.core.images.blur, (0, 0))
 
@@ -43,6 +37,8 @@ class Settings:
             select = self.core.window.blit(self.core.images.dropdown['open'], (50, 385))
             clip_rect = pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4-self.scrollTop, 260, 43 * self._maxSelectCount), border_radius=8)
             self.core.window.set_clip(clip_rect)
+            if clip_rect.collidepoint(mouse) and scrolled:
+                self.handleScroll(scrolled)
             for i in range(len(self.core.sounds.array())):
                 btn = self.core.window.blit(self.core.images.block['active_song' if self.core.sounds.selected == i else 'song'], ((62, y)))
                 self.core.window.blit(
@@ -71,3 +67,11 @@ class Settings:
             if(self.core.page != 'menu'):
                 self.select = False
                 self.core.updatePage('menu')
+
+    def handleScroll(self, scrolled):
+        if(scrolled and self.select):
+            if(scrolled == 4 and 43*len(self.core.sounds.array()) > (self.scrollTop-self._maxSelectCount*43) * -1):
+                self.scrollTop -= 10
+            elif(0 > self.scrollTop):
+                self.scrollTop += 10
+
