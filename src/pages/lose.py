@@ -4,7 +4,7 @@ class Lose:
     def __init__(self, core):
         self.core = core
 
-    def render(self, clicked):
+    def render(self, clicked, scrolled):
         mouse = pygame.mouse.get_pos()
 
         self.core.window.blit(self.core.images.blur, (0, 0))
