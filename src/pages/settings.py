@@ -37,8 +37,10 @@ class Settings:
             select = self.core.window.blit(self.core.images.dropdown['open'], (50, 385))
             clip_rect = pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4-self.scrollTop, 260, 43 * self._maxSelectCount), border_radius=8)
             self.core.window.set_clip(clip_rect)
+            
             if clip_rect.collidepoint(mouse) and scrolled:
                 self.handleScroll(scrolled)
+
             for i in range(len(self.core.sounds.array())):
                 btn = self.core.window.blit(self.core.images.block['active_song' if self.core.sounds.selected == i else 'song'], ((62, y)))
                 self.core.window.blit(
