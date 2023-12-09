@@ -6,7 +6,7 @@ class Shop:
     def __init__(self, core):
         self.core = core
     
-    def render(self, clicked, scrolled):
+    def render(self, events):
         mouse = pygame.mouse.get_pos()
         
         self.core.setCarAnimation()
@@ -21,7 +21,7 @@ class Shop:
         )
         
         settings = self.core.components.settings(False, (305, 15))
-        if settings.collidepoint(mouse) and clicked:
+        if settings.collidepoint(mouse) and events['clicked']:
             if(self.core.page != 'menu'):
                 self.core.updatePage('menu')
 
@@ -33,7 +33,7 @@ class Shop:
                 self.core.window.blit(self.core.images.buttons['selected'], (132, 399))
             else:
                 setter = self.core.window.blit(self.core.images.buttons['apply'], (132, 399))
-                if setter.collidepoint(mouse) and clicked:
+                if setter.collidepoint(mouse) and events['clicked']:
                     for i in range(len(skins)):
                         if(skins[i]['default']):
                             self.core.config['skins'][i]['default'] = False
@@ -45,7 +45,7 @@ class Shop:
                 self.core.window.blit(self.core.images.buttons['expensive'], (132, 399))
             else:
                 buy = self.core.window.blit(self.core.images.buttons['buy'], (132, 399))
-                if buy.collidepoint(mouse) and clicked:
+                if buy.collidepoint(mouse) and events['clicked']:
                     self.core.config['skins'][self.page]['has'] = True
                     self.core.config['coins'] -= skins[self.page]['cost']
                     self.core.updateConfig(self.core.config)
@@ -68,11 +68,11 @@ class Shop:
         )
 
         left = self.core.window.blit(self.core.images.arrows['left'], (16, 306))
-        if left.collidepoint(mouse) and clicked:
+        if left.collidepoint(mouse) and events['clicked']:
             self.left()
 
         right = self.core.window.blit(self.core.images.arrows['right'], (296, 306))
-        if right.collidepoint(mouse) and clicked:
+        if right.collidepoint(mouse) and events['clicked']:
             self.right()
         
     def right(self):

@@ -58,17 +58,16 @@ class Core(Util):
             self.updatePlaying()
             self.updateCarAnimation()
 
-            clicked = False
-            srolled = False
+            events = { 'clicked': False, 'scrolled': False }
 
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        clicked = True
+                        events['clicked'] = True
                     elif event.button in [4, 5]:
-                        srolled = event.button
+                        events['scrolled'] = event.button
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         if self.page == 'game':
@@ -81,7 +80,7 @@ class Core(Util):
                             self.page = 'game'
   
             if(self.page in self.pages):
-                self.pages[self.page].render(clicked, srolled)
+                self.pages[self.page].render(events)
 
             pygame.display.update()
             pygame.time.Clock().tick(300)

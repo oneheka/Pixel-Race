@@ -41,7 +41,7 @@ class Game:
             }
         ]
 
-    def render(self, clicked, scrolled):
+    def render(self, events):
         if(not self.core.paused):
             self.handler()
         
