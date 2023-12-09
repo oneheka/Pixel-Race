@@ -65,9 +65,10 @@ class Game:
 
         for i in self.core.config['skins']:
             if i['default'] == True:
-                self.car_rect = self.core.images.getSkin(i['name'].lower()).get_rect(topleft=(self.car_x, self.car_y))
+                name = i['name'].lower()
+                self.car_rect = self.core.images.getSkin(name).get_rect(topleft=(self.car_x, self.car_y))
                 self.core.window.blit(
-                    self.core.images.getSkin(i['name'].lower()),
+                    self.core.images.getSkin(name),
                     (self.car_x, self.car_y)
                 )
     
