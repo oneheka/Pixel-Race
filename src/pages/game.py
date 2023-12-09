@@ -89,6 +89,7 @@ class Game:
         self.coins = 0
     
     def gameOver(self):
+        self.core.sounds.others['CarDestroy'].play()
         self.core.lastStars = self.coins
         self.core.lastMetrs = self.getMetrs()
         self.core.config['coins'] += self.coins

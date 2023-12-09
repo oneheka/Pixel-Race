@@ -44,7 +44,7 @@ class Util:
     @property
     def fonts(self):
         return self.storage['font']
-    
+
     def getConfig(self):
         with open(self._configDir) as f:
             file_content = f.read()

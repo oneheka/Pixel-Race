@@ -38,7 +38,7 @@ class Core(Util):
                 self.sounds.active['file'].play(-1)
             else:
                 self.sounds.active['file'].stop()
-    
+
     def updatePage(self, page):
         self.selectFact = self.random(0, len(self.images.facts)-1)
         self.page = page
