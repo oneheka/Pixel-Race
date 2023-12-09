@@ -27,7 +27,7 @@ class Menu:
 
         self.core.window.blit(self.core.images.info_wrapper, (16, 588))
         if(self.core.selectFact != -1):
-            self.core.window.blit(self.core.images.facts[self.core.selectFact], (28, 600))
+            self.core.window.blit(self.core.images.facts[self.core.selectFact], (16, 588))
         
         settings = self.core.components.settings(True, (305, 15))
         if settings.collidepoint(mouse) and clicked:
