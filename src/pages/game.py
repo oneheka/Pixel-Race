@@ -41,7 +41,7 @@ class Game:
             }
         ]
 
-    def render(self, clicked):
+    def render(self, events):
         if(not self.core.paused):
             self.handler()
         
@@ -65,9 +65,10 @@ class Game:
 
         for i in self.core.config['skins']:
             if i['default'] == True:
-                self.car_rect = self.core.images.getSkin(i['name'].lower()).get_rect(topleft=(self.car_x, self.car_y))
+                name = i['name'].lower()
+                self.car_rect = self.core.images.getSkin(name).get_rect(topleft=(self.car_x, self.car_y))
                 self.core.window.blit(
-                    self.core.images.getSkin(i['name'].lower()),
+                    self.core.images.getSkin(name),
                     (self.car_x, self.car_y)
                 )
     
@@ -89,6 +90,7 @@ class Game:
         self.coins = 0
     
     def gameOver(self):
+        self.core.sounds.others['CarDestroy'].play()
         self.core.lastStars = self.coins
         self.core.lastMetrs = self.getMetrs()
         self.core.config['coins'] += self.coins

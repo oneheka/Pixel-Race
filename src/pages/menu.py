@@ -4,7 +4,7 @@ class Menu:
     def __init__(self, core):
         self.core = core
     
-    def render(self, clicked):
+    def render(self, events):
         mouse = pygame.mouse.get_pos()
 
         self.core.setCarAnimation()
@@ -24,20 +24,23 @@ class Menu:
                 str(self.core.config['coins'])
             ), (22, 74)
         )
+
+        self.core.window.blit(self.core.images.info_wrapper, (16, 588))
+        if(self.core.selectFact != -1):
+            self.core.window.blit(self.core.images.facts[self.core.selectFact], (16, 588))
         
         settings = self.core.components.settings(True, (305, 15))
-        if settings.collidepoint(mouse) and clicked:
+        if settings.collidepoint(mouse) and events['clicked']:
             if(self.core.page != 'settings'):
-                self.core.page = 'settings'
+                self.core.updatePage('settings')
 
         play = self.core.window.blit(self.core.images.buttons['play'], (90, 261))
-        if play.collidepoint(mouse) and clicked:
+        if play.collidepoint(mouse) and events['clicked']:
             if(self.core.page != 'game'):
                 self.core.pages['game'].startGame()
-                self.core.page = 'game'
+                self.core.updatePage('game')
 
         skin = self.core.window.blit(self.core.images.buttons['shop'], (90, 334))
-        if skin.collidepoint(mouse) and clicked:
+        if skin.collidepoint(mouse) and events['clicked']:
             if(self.core.page != 'shop'):
-                self.core.page = 'shop'
-
+                self.core.updatePage('shop')

@@ -39,6 +39,11 @@ class Core(Util):
             else:
                 self.sounds.active['file'].stop()
 
+    def updatePage(self, page):
+        self.selectFact = self.random(0, len(self.images.facts)-1)
+        self.page = page
+        return page
+
     def start(self):
         pygame.display.set_caption('Pixel Race')
         pygame.display.set_icon(self.images.logo)
@@ -53,14 +58,16 @@ class Core(Util):
             self.updatePlaying()
             self.updateCarAnimation()
 
-            clicked = False
+            events = { 'clicked': False, 'scrolled': False }
 
             for event in pygame.event.get():
                 if(event.type == pygame.QUIT):
                     pygame.quit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        clicked = True
+                        events['clicked'] = True
+                    elif event.button in [4, 5]:
+                        events['scrolled'] = event.button
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         if self.page == 'game':
@@ -73,7 +80,7 @@ class Core(Util):
                             self.page = 'game'
   
             if(self.page in self.pages):
-                self.pages[self.page].render(clicked)
+                self.pages[self.page].render(events)
 
             pygame.display.update()
             pygame.time.Clock().tick(300)

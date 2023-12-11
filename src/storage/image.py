@@ -9,6 +9,7 @@ class Image:
         self.stats = pygame.image.load('assets/images/Stats.png').convert_alpha()
         self.speedometer = pygame.image.load('assets/images/Speedometer.png').convert_alpha()
         self.skin_wrapper = pygame.image.load('assets/images/SkinWrapper.png').convert_alpha()
+        self.info_wrapper = pygame.image.load('assets/images/InfoWrapper.png').convert_alpha()
         self.toggle = {
             'on': pygame.image.load('assets/images/toggle/On.png').convert_alpha(),
             'off': pygame.image.load('assets/images/toggle/Off.png').convert_alpha()
@@ -59,6 +60,7 @@ class Image:
             'day': pygame.image.load('assets/images/asphalt/Day.png').convert_alpha(),
             'night': pygame.image.load('assets/images/asphalt/Night.png').convert_alpha()
         }
+        self._loadFacts()
         self._loadOpponents()
         
     
@@ -70,4 +72,11 @@ class Image:
         for filename in os.listdir('assets/images/opponents'):
             self.opponents.append(
                 pygame.image.load(f'assets/images/opponents/{filename}').convert_alpha(),
+            )
+    
+    def _loadFacts(self):
+        self.facts = []
+        for filename in os.listdir('assets/images/text/info'):
+            self.facts.append(
+                pygame.image.load(f'assets/images/text/info/{filename}').convert_alpha(),
             )
