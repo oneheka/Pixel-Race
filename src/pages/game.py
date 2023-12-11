@@ -48,20 +48,20 @@ class Game:
         self.updtaeItems()
         self.speedometer()
 
-        self.core.window.blit(self.core.images.stats, (15, 15))
+        self.core.window.blit(self.core.images.stats, (16, 16))
         self.core.window.blit(
             self.core.fonts.render(
                 str(self.getMetrs())+'m'
-            ), ((22, 24))
+            ), (25, 26)
         )
 
-        self.core.window.blit(self.core.images.stats, (15, 66))
+        self.core.window.blit(self.core.images.stats, (16, 60))
+        self.core.window.blit(self.core.images.coins['small'], (76, 68))
         self.core.window.blit(
             self.core.fonts.render(
                 str(self.coins)
-            ), ((22, 75))
+            ), (25, 70)
         )
-        self.core.window.blit(self.core.images.coins['small'], (74, 74))
 
         for i in self.core.config['skins']:
             if i['default'] == True:
@@ -73,13 +73,13 @@ class Game:
                 )
     
     def speedometer(self):
-        self.core.window.blit(self.core.images.speedometer, (256, 15))
+        self.core.window.blit(self.core.images.speedometer, (256, 16))
         speed = self.core.fonts.render(self.formatSpeed())
         self.core.window.blit(
-            speed, speed.get_rect(center=(302, 60))
+            speed, speed.get_rect(center=(303, 61))
         )
         pygame.draw.arc(
-            self.core.window, (255, 69, 58), (256, 15, 96, 96),
+            self.core.window, (255, 69, 59), (256, 16, 96, 96),
             3.14 * 3 / 2, self.formulaSpeed(3.14) * 16 + (3.14 * 3 / 2), 10
         )
 
@@ -175,6 +175,7 @@ class Game:
             if(item['file'].get_rect(topleft=(item['x'], item['y'])).colliderect(self.car_rect)):
                 if(item['id'] == 'coin'):
                     self.coins += 1
+                    self.core.sounds.others['CoinCollect'].play()
                     self.items.remove(item)
                 elif(item['id'] == 'car'):
                     self.gameOver()

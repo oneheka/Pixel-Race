@@ -10,19 +10,19 @@ class Menu:
         self.core.setCarAnimation()
         self.core.window.blit(self.core.images.blur, (0, 0))
         
-        self.core.window.blit(self.core.images.stats, (15, 15))
+        self.core.window.blit(self.core.images.stats, (16, 16))
         self.core.window.blit(
             self.core.fonts.render(
                 str(self.core.config['record'])+'m'
-            ), (22, 24)
+            ), (25, 26)
         )
 
-        self.core.window.blit(self.core.images.stats, (15, 66))
-        self.core.window.blit(self.core.images.coins['small'], (74, 74))
+        self.core.window.blit(self.core.images.stats, (16, 60))
+        self.core.window.blit(self.core.images.coins['small'], (76, 68))
         self.core.window.blit(
             self.core.fonts.render(
                 str(self.core.config['coins'])
-            ), (22, 74)
+            ), (25, 70)
         )
 
         self.core.window.blit(self.core.images.info_wrapper, (16, 588))
