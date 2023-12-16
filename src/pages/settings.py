@@ -5,6 +5,8 @@ class Settings:
     select = False
     scrollTop = 0
     _maxSelectCount = 5
+    _scrollToping = 15
+    _musicBlockHeight = 43
     
     def __init__(self, core):
         self.core = core
@@ -35,7 +37,7 @@ class Settings:
         if(self.select):
             y = 425 + self.scrollTop
             select = self.core.window.blit(self.core.images.dropdown['open'], (50, 385))
-            clip_rect = pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4-self.scrollTop, 260, 43 * self._maxSelectCount), border_radius=8)
+            clip_rect = pygame.draw.rect(self.core.window, (10, 12, 15), (50, y-4-self.scrollTop, 260, self._musicBlockHeight * self._maxSelectCount), border_radius=8)
             self.core.window.set_clip(clip_rect)
             
             if clip_rect.collidepoint(mouse) and events['scrolled']:
@@ -48,7 +50,7 @@ class Settings:
                         self.core.sounds.array()[i]['label']
                     ), (67, y+6)
                 )
-                y += 43
+                y += self._musicBlockHeight
                 if btn.collidepoint(mouse) and events['clicked']:
                     if(self.isPlaying):
                         for j in range(len(self.core.sounds.array())):
@@ -73,10 +75,10 @@ class Settings:
     def handleScroll(self, scrolled):
         if(scrolled and self.select):
             if(scrolled == 5):
-                if(43*len(self.core.sounds.array()) > (self.scrollTop-self._maxSelectCount*43) * -1):
-                    self.scrollTop -= 15
+                if(self._musicBlockHeight*len(self.core.sounds.array()) > (self.scrollTop-self._maxSelectCount*self._musicBlockHeight) * -1):
+                    self.scrollTop -= self._scrollToping
                 else:
-                    self.scrollTop = (43*len(self.core.sounds.array())*-1 + (self._maxSelectCount*43))
+                    self.scrollTop = (self._musicBlockHeight*len(self.core.sounds.array())*-1 + (self._maxSelectCount*self._musicBlockHeight))
             elif(0 > self.scrollTop):
-                self.scrollTop += 15
+                self.scrollTop += self._scrollToping
 
