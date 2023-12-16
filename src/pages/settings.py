@@ -72,8 +72,11 @@ class Settings:
 
     def handleScroll(self, scrolled):
         if(scrolled and self.select):
-            if(scrolled == 5 and 43*len(self.core.sounds.array()) > (self.scrollTop-self._maxSelectCount*43) * -1):
-                self.scrollTop -= 10
+            if(scrolled == 5):
+                if(43*len(self.core.sounds.array()) > (self.scrollTop-self._maxSelectCount*43) * -1):
+                    self.scrollTop -= 15
+                else:
+                    self.scrollTop = (43*len(self.core.sounds.array())*-1 + (self._maxSelectCount*43))
             elif(0 > self.scrollTop):
-                self.scrollTop += 10
+                self.scrollTop += 15
 
