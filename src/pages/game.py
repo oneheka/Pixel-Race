@@ -8,7 +8,6 @@ class Game:
     coins = 0
     metrs = 0
     lastAdd = 10
-    car_rect = 0
     items = []
     speedY = 0
 
