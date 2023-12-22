@@ -52,15 +52,16 @@ class Settings:
                 )
                 y += self._musicBlockHeight
                 if btn.collidepoint(mouse) and events['clicked']:
+                    self.core.sounds.setSound(i)
+                    self.core.config['music'] = i
+                    self.core.updateConfig(self.core.config)
                     if(self.isPlaying):
                         for j in range(len(self.core.sounds.array())):
                             self.core.sounds.array()[j]['file'].stop()
-                        self.core.sounds.setSound(i)
                         self.core.sounds.array()[i]['file'].play(-1)
                         self.select = False
                     else:
                         self.select = False
-                        self.core.sounds.setSound(i)
             self.core.window.set_clip(None)
         else:
             select = self.core.window.blit(self.core.images.dropdown['close'], (50, 385))
