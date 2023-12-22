@@ -58,6 +58,9 @@ class Settings:
                         self.core.sounds.setSound(i)
                         self.core.sounds.array()[i]['file'].play(-1)
                         self.select = False
+                    else:
+                        self.select = False
+                        self.core.sounds.setSound(i)
             self.core.window.set_clip(None)
         else:
             select = self.core.window.blit(self.core.images.dropdown['close'], (50, 385))
