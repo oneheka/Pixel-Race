@@ -10,7 +10,6 @@ __Version__ : 1.0.0 release
 ![Настройки](assets/readme/settings.png?raw=True)
 ![Магазин скинов](assets/readme/shop.png?raw=True)
 ![Геймплей](assets/readme/gameplay.png?raw=True)
-![test](https://i.imgur.com/2c0GXsK.png)
 
 ## Как запустить игру
 
