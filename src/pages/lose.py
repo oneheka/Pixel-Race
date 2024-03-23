@@ -5,6 +5,7 @@ class Lose:
         self.core = core
 
     def render(self, events):
+        hovered = False
         mouse = pygame.mouse.get_pos()
 
         self.core.window.blit(self.core.images.blur, (0, 0))
@@ -24,12 +25,16 @@ class Lose:
         self.core.window.blit(self.core.images.coins['small'], (230, 330))
 
         menu = self.core.window.blit(self.core.images.buttons['menu'], (188, 380))
-        if menu.collidepoint(mouse) and events['clicked']:
-            if(self.core.page != 'menu'):
+        if menu.collidepoint(mouse):
+            hovered = True
+            if(events['clicked'] and self.core.page != 'menu'):
                 self.core.updatePage('menu')
 
         again = self.core.window.blit(self.core.images.buttons['again'], (76, 380))
-        if again.collidepoint(mouse) and events['clicked']:
-            if(self.core.page != 'game'):
+        if again.collidepoint(mouse):
+            hovered = True
+            if(events['clicked'] and self.core.page != 'game'):
                 self.core.pages['game'].startGame()
                 self.core.updatePage('game')
+
+        return hovered

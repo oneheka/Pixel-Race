@@ -7,6 +7,7 @@ class Shop:
         self.core = core
     
     def render(self, events):
+        hovered = False
         mouse = pygame.mouse.get_pos()
         
         self.core.setCarAnimation()
@@ -21,8 +22,9 @@ class Shop:
         )
         
         settings = self.core.components.settings(False, (305, 15))
-        if settings.collidepoint(mouse) and events['clicked']:
-            if(self.core.page != 'menu'):
+        if settings.collidepoint(mouse):
+            hovered = True
+            if(events['clicked'] and self.core.page != 'menu'):
                 self.core.updatePage('menu')
 
         self.core.window.blit(self.core.images.skin_wrapper, (101, 200))
@@ -33,22 +35,26 @@ class Shop:
                 self.core.window.blit(self.core.images.buttons['selected'], (132, 399))
             else:
                 setter = self.core.window.blit(self.core.images.buttons['apply'], (132, 399))
-                if setter.collidepoint(mouse) and events['clicked']:
-                    for i in range(len(skins)):
-                        if(skins[i]['default']):
-                            self.core.config['skins'][i]['default'] = False
-                    self.core.config['skins'][self.page]['default'] = True
-                    self.core.selectSkin = self.page
-                    self.core.updateConfig(self.core.config)
+                if setter.collidepoint(mouse):
+                    hovered = True
+                    if(events['clicked']):
+                        for i in range(len(skins)):
+                            if(skins[i]['default']):
+                                self.core.config['skins'][i]['default'] = False
+                        self.core.config['skins'][self.page]['default'] = True
+                        self.core.selectSkin = self.page
+                        self.core.updateConfig(self.core.config)
         else:
             if(skins[self.page]['cost'] > self.core.config['coins']):
                 self.core.window.blit(self.core.images.buttons['expensive'], (132, 399))
             else:
                 buy = self.core.window.blit(self.core.images.buttons['buy'], (132, 399))
-                if buy.collidepoint(mouse) and events['clicked']:
-                    self.core.config['skins'][self.page]['has'] = True
-                    self.core.config['coins'] -= skins[self.page]['cost']
-                    self.core.updateConfig(self.core.config)
+                if buy.collidepoint(mouse):
+                    hovered = True
+                    if(events['clicked']):
+                        self.core.config['skins'][self.page]['has'] = True
+                        self.core.config['coins'] -= skins[self.page]['cost']
+                        self.core.updateConfig(self.core.config)
 
         self.core.window.blit(self.core.images.coins['small'], (186, 231))
         self.core.window.blit(
@@ -67,13 +73,19 @@ class Shop:
             name, name.get_rect(center=(self.core.window.get_size()[0]/2, 380))
         )
 
-        left = self.core.window.blit(self.core.images.arrows['left'], (16, 306))
-        if left.collidepoint(mouse) and events['clicked']:
-            self.left()
+        left = self.core.components.arrow('left', (16, 306))
+        if left.collidepoint(mouse):
+            hovered = True
+            if(events['clicked']):
+                self.left()
 
-        right = self.core.window.blit(self.core.images.arrows['right'], (296, 306))
-        if right.collidepoint(mouse) and events['clicked']:
-            self.right()
+        right = self.core.components.arrow('right', (296, 306))
+        if right.collidepoint(mouse):
+            hovered = True
+            if(events['clicked']):
+                self.right()
+                
+        return hovered
         
     def right(self):
         if(self.page + 1 >= len(self.core.config['skins'])):

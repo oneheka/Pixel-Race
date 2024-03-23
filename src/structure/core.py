@@ -11,6 +11,7 @@ class Core(Util):
     window = pygame.display.set_mode((360, 660))
     page = 'menu'
     paused = False
+    hover = False
     lastMetrs = 0
     lastStars = 0
 
@@ -51,6 +52,15 @@ class Core(Util):
         while True:
             self.window.blit(self.images.asphalt[self.config['theme']], (0, 0))
 
+            if(self.page == 'game'):
+                pygame.mouse.set_visible(False)
+            elif(self.hover):
+                pygame.mouse.set_visible(True)
+                pygame.mouse.set_system_cursor(pygame.SYSTEM_CURSOR_HAND)
+            else:
+                pygame.mouse.set_visible(True)
+                pygame.mouse.set_system_cursor(pygame.SYSTEM_CURSOR_ARROW)
+
             if(not self.paused):
                 if(self.pages['game'].metrs > 0):
                     self.pages['game'].metrs += 1
@@ -80,7 +90,7 @@ class Core(Util):
                             self.page = 'game'
   
             if(self.page in self.pages):
-                self.pages[self.page].render(events)
+                self.hover = self.pages[self.page].render(events)
 
             pygame.display.update()
             pygame.time.Clock().tick(300)

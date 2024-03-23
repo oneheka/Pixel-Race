@@ -12,6 +12,7 @@ class Settings:
         self.core = core
     
     def render(self, events):
+        hovered = False
         mouse = pygame.mouse.get_pos()
 
         self.core.setCarAnimation()
@@ -22,15 +23,19 @@ class Settings:
         self.core.window.blit(self.core.images.texts['sound'], (116, 243))
         toggleSound = self.core.components.switcher(self.isPlaying, (194, 241))
 
-        if toggleSound.collidepoint(mouse) and events['clicked']:
-            self.isPlaying = not self.isPlaying
+        if toggleSound.collidepoint(mouse):
+            hovered = True
+            if(events['clicked']):
+                self.isPlaying = not self.isPlaying
 
         self.core.window.blit(self.core.images.texts['night'], (116, 294))
         toggleNight = self.core.components.switcher(self.core.config['theme'] == 'night', (194, 290))
         
-        if toggleNight.collidepoint(mouse) and events['clicked']:
-            self.core.config['theme'] = 'day' if self.core.config['theme'] == 'night' else 'night'
-            self.core.updateConfig(self.core.config)
+        if toggleNight.collidepoint(mouse):
+            hovered = True
+            if(events['clicked']):
+                self.core.config['theme'] = 'day' if self.core.config['theme'] == 'night' else 'night'
+                self.core.updateConfig(self.core.config)
 
         self.core.window.blit(self.core.images.texts['choose_music'], (82, 345))
 
@@ -51,30 +56,38 @@ class Settings:
                     ), (67, y+6)
                 )
                 y += self._musicBlockHeight
-                if btn.collidepoint(mouse) and events['clicked']:
-                    self.core.sounds.setSound(i)
-                    self.core.config['music'] = i
-                    self.core.updateConfig(self.core.config)
-                    if(self.isPlaying):
-                        for j in range(len(self.core.sounds.array())):
-                            self.core.sounds.array()[j]['file'].stop()
-                        self.core.sounds.array()[i]['file'].play(-1)
-                        self.select = False
-                    else:
-                        self.select = False
+                if btn.collidepoint(mouse):
+                    hovered = True
+                    if(events['clicked']):
+                        self.core.sounds.setSound(i)
+                        self.core.config['music'] = i
+                        self.core.updateConfig(self.core.config)
+                        if(self.isPlaying):
+                            for j in range(len(self.core.sounds.array())):
+                                self.core.sounds.array()[j]['file'].stop()
+                            self.core.sounds.array()[i]['file'].play(-1)
+                            self.select = False
+                        else:
+                            self.select = False
+
             self.core.window.set_clip(None)
         else:
             select = self.core.window.blit(self.core.images.dropdown['close'], (50, 385))
         
-        if select.collidepoint(mouse) and events['clicked']:
-            self.select = not self.select
-            self.scrollTop = 0
+        if select.collidepoint(mouse):
+            hovered = True
+            if(events['clicked']):
+                self.select = not self.select
+                self.scrollTop = 0
 
         settings = self.core.components.settings(False, (305, 15))
-        if settings.collidepoint(mouse) and events['clicked']:
-            if(self.core.page != 'menu'):
+        if settings.collidepoint(mouse):
+            hovered = True
+            if(events['clicked'] and self.core.page != 'menu'):
                 self.select = False
                 self.core.updatePage('menu')
+                
+        return hovered
 
     def handleScroll(self, scrolled):
         if(scrolled and self.select):

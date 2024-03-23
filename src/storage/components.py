@@ -13,3 +13,9 @@ class Components:
             self.core.images.settings['open' if state else 'close'],
             position
         )
+
+    def arrow(self, arrow, position):
+        return self.core.window.blit(
+            self.core.images.arrows[arrow],
+            position
+        )
